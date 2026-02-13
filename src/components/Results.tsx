@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 
 interface StatProps {
@@ -18,7 +18,6 @@ function AnimatedCounter({ value, suffix, label }: StatProps) {
   useEffect(() => {
     if (!isInView) return;
 
-    let start = 0;
     const end = value;
     const duration = 2000;
     const startTime = Date.now();
@@ -27,8 +26,7 @@ function AnimatedCounter({ value, suffix, label }: StatProps) {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      start = Math.floor(eased * end);
-      setCount(start);
+      setCount(Math.floor(eased * end));
 
       if (progress >= 1) {
         clearInterval(timer);
@@ -41,11 +39,13 @@ function AnimatedCounter({ value, suffix, label }: StatProps) {
 
   return (
     <div ref={ref} className="text-center">
-      <p className="stat-glow text-4xl font-bold text-accent sm:text-5xl">
+      <p className="text-4xl font-bold sm:text-5xl lg:text-6xl text-accent">
         {count}
         {suffix}
       </p>
-      <p className="mt-2 text-sm text-[#E8E8ED]/50">{label}</p>
+      <p className="mt-2 text-sm text-foreground/55 font-medium sm:text-base">
+        {label}
+      </p>
     </div>
   );
 }
@@ -57,7 +57,6 @@ const stats: StatProps[] = [
   { value: 40, suffix: "+", label: "Hours saved per client monthly" },
 ];
 
-/* PLACEHOLDER TESTIMONIALS — Replace with real testimonials */
 const testimonials = [
   {
     quote:
@@ -65,6 +64,8 @@ const testimonials = [
     name: "Marcus T.",
     company: "Elite HVAC Solutions",
     industry: "Home Services",
+    initials: "MT",
+    colorClass: "bg-accent/15 text-accent",
   },
   {
     quote:
@@ -72,6 +73,8 @@ const testimonials = [
     name: "Sarah K.",
     company: "Bright Digital Agency",
     industry: "Marketing Agency",
+    initials: "SK",
+    colorClass: "bg-accent-warm/15 text-accent-warm",
   },
   {
     quote:
@@ -79,6 +82,8 @@ const testimonials = [
     name: "James R.",
     company: "Apex Staffing Group",
     industry: "Recruiting",
+    initials: "JR",
+    colorClass: "bg-[#8B5CF6]/15 text-[#8B5CF6]",
   },
 ];
 
@@ -88,52 +93,54 @@ export default function Results() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <span className="section-eyebrow text-accent">RESULTS</span>
+            <h2 className="text-3xl font-bold tracking-tight text-heading sm:text-4xl">
               What Happens When You{" "}
               <span className="gradient-text">Automate</span>
             </h2>
           </div>
         </AnimatedSection>
 
-        {/* Stats grid */}
-        <div className="mt-16 grid grid-cols-2 gap-8 md:grid-cols-4">
-          {stats.map((stat, i) => (
-            <AnimatedSection key={i} delay={i * 0.1}>
-              <AnimatedCounter {...stat} />
-            </AnimatedSection>
-          ))}
+        <div className="section-container mt-14">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-10">
+            {stats.map((stat, i) => (
+              <AnimatedSection key={i} delay={i * 0.08}>
+                <AnimatedCounter {...stat} />
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
 
-        {/* Testimonials */}
         <div className="mt-20 grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial, i) => (
-            <AnimatedSection key={i} delay={i * 0.15}>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-                className="glass-card relative rounded-2xl p-8"
-              >
-                {/* Quote mark */}
-                <span className="absolute top-6 left-8 text-5xl font-bold leading-none text-accent-warm/30">
+            <AnimatedSection key={i} delay={i * 0.1}>
+              <div className="relative flex h-full flex-col rounded-xl border border-border bg-surface p-7 lg:p-8 transition-colors hover:border-border-hover">
+                <span className="absolute top-5 left-7 text-5xl font-bold leading-none text-accent/15">
                   &ldquo;
                 </span>
 
-                <div className="relative pt-6">
-                  {/* PLACEHOLDER — Replace with real testimonial */}
-                  <p className="text-sm leading-relaxed text-[#E8E8ED]/60 italic">
+                <div className="relative flex flex-1 flex-col pt-7">
+                  <p className="flex-1 text-[0.9375rem] leading-relaxed text-foreground/70">
                     {testimonial.quote}
                   </p>
 
-                  <div className="mt-6 border-t border-white/[0.06] pt-4">
-                    <p className="text-sm font-semibold text-white">
-                      {testimonial.name}
-                    </p>
-                    <p className="text-xs text-[#E8E8ED]/40">
-                      {testimonial.company} · {testimonial.industry}
-                    </p>
+                  <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
+                    <div
+                      className={`flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold ${testimonial.colorClass}`}
+                    >
+                      {testimonial.initials}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-heading">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-xs text-foreground/50">
+                        {testimonial.company} · {testimonial.industry}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </AnimatedSection>
           ))}
         </div>

@@ -1,5 +1,8 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+
 const footerLinks = [
   { label: "Solutions", href: "#solutions" },
   { label: "How It Works", href: "#how-it-works" },
@@ -8,52 +11,80 @@ const footerLinks = [
 ];
 
 export default function Footer() {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomepage = pathname === "/";
+
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
+    if (isHomepage) {
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push(`/${href}`);
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (isHomepage) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      router.push("/");
     }
   };
 
   return (
-    <footer className="border-t border-white/[0.06] bg-surface/30 py-12">
+    <footer className="relative bg-surface-alt py-14">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-          {/* Logo */}
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="text-lg font-bold tracking-tight text-white font-heading"
-          >
-            Douglas<span className="text-accent">AI</span>
-          </a>
+          <div className="text-center md:text-left">
+            {isHomepage ? (
+              <a
+                href="#"
+                onClick={handleLogoClick}
+                className="text-lg font-bold tracking-tight text-heading font-heading"
+              >
+                Douglas<span className="text-accent">AI</span>
+              </a>
+            ) : (
+              <Link
+                href="/"
+                onClick={handleLogoClick}
+                className="text-lg font-bold tracking-tight text-heading font-heading"
+              >
+                Douglas<span className="text-accent">AI</span>
+              </Link>
+            )}
+            <p className="mt-1 text-sm text-foreground/45">
+              AI automation for home services & agencies
+            </p>
+          </div>
 
-          {/* Links */}
           <nav className="flex flex-wrap items-center justify-center gap-6">
             {footerLinks.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={isHomepage ? link.href : `/${link.href}`}
                 onClick={(e) => handleClick(e, link.href)}
-                className="text-sm text-[#E8E8ED]/50 transition-colors hover:text-white"
+                className="text-sm text-foreground/55 transition-colors hover:text-heading"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Social / contact */}
           <div className="flex items-center gap-4">
-            {/* [LINKEDIN_LINK] — Replace with your LinkedIn URL */}
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] text-[#E8E8ED]/50 transition-all hover:border-accent/30 hover:text-white"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-foreground/50 transition-all hover:border-accent/30 hover:text-heading"
               aria-label="LinkedIn"
             >
               <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -63,9 +94,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 border-t border-white/[0.06] pt-8 text-center">
-          <p className="text-xs text-[#E8E8ED]/30">
+        <div className="mt-8 border-t border-border pt-8 text-center">
+          <p className="text-sm text-foreground/35">
             &copy; {new Date().getFullYear()} Douglas AI. All rights reserved.
           </p>
         </div>

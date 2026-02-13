@@ -1,7 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Solutions", href: "#solutions" },
@@ -13,6 +16,9 @@ const navLinks = [
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomepage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -31,12 +37,37 @@ export default function Navigation() {
     };
   }, [mobileOpen]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     e.preventDefault();
     setMobileOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
+    if (isHomepage) {
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push(`/${href}`);
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (isHomepage) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      router.push("/");
+    }
+  };
+
+  const handleGetStarted = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    if (isHomepage) {
+      const target = document.querySelector("#contact");
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    } else {
+      router.push("/#contact");
     }
   };
 
@@ -45,72 +76,82 @@ export default function Navigation() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0A0A0F]/80 backdrop-blur-xl border-b border-white/[0.06]"
+            ? "bg-background/80 backdrop-blur-xl border-b border-border"
             : "bg-transparent"
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between lg:h-20">
-            {/* Logo */}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="text-lg font-bold tracking-tight text-white font-heading"
-            >
-              Douglas<span className="text-accent">AI</span>
-            </a>
+            {isHomepage ? (
+              <a
+                href="#"
+                onClick={handleLogoClick}
+                className="text-lg font-bold tracking-tight text-heading font-heading"
+              >
+                Douglas<span className="text-accent">AI</span>
+              </a>
+            ) : (
+              <Link
+                href="/"
+                onClick={handleLogoClick}
+                className="text-lg font-bold tracking-tight text-heading font-heading"
+              >
+                Douglas<span className="text-accent">AI</span>
+              </Link>
+            )}
 
             {/* Desktop nav */}
             <div className="hidden items-center gap-8 md:flex">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={isHomepage ? link.href : `/${link.href}`}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm text-[#E8E8ED]/70 transition-colors hover:text-white"
+                  className="text-[0.9375rem] text-foreground/70 transition-colors hover:text-heading"
                 >
                   {link.label}
                 </a>
               ))}
+              <ThemeToggle />
               <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, "#contact")}
-                className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-[#0A0A0F] transition-all hover:bg-accent/90 hover:shadow-[0_0_20px_rgba(0,212,255,0.3)]"
+                href={isHomepage ? "#contact" : "/#contact"}
+                onClick={handleGetStarted}
+                className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-all hover:bg-accent-hover"
               >
                 Get Started
               </a>
             </div>
 
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            >
-              <div className="flex w-6 flex-col gap-1.5">
-                <span
-                  className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                    mobileOpen ? "translate-y-2 rotate-45" : ""
-                  }`}
-                />
-                <span
-                  className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                    mobileOpen ? "opacity-0" : ""
-                  }`}
-                />
-                <span
-                  className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                    mobileOpen ? "-translate-y-2 -rotate-45" : ""
-                  }`}
-                />
-              </div>
-            </button>
+            {/* Mobile: theme toggle + hamburger */}
+            <div className="flex items-center gap-3 md:hidden">
+              <ThemeToggle />
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="relative z-50 flex h-10 w-10 items-center justify-center"
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              >
+                <div className="flex w-6 flex-col gap-1.5">
+                  <span
+                    className={`block h-0.5 w-full bg-heading transition-all duration-300 ${
+                      mobileOpen ? "translate-y-2 rotate-45" : ""
+                    }`}
+                  />
+                  <span
+                    className={`block h-0.5 w-full bg-heading transition-all duration-300 ${
+                      mobileOpen ? "opacity-0" : ""
+                    }`}
+                  />
+                  <span
+                    className={`block h-0.5 w-full bg-heading transition-all duration-300 ${
+                      mobileOpen ? "-translate-y-2 -rotate-45" : ""
+                    }`}
+                  />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>
@@ -123,7 +164,7 @@ export default function Navigation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
@@ -131,28 +172,28 @@ export default function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed right-0 top-0 z-40 flex h-full w-72 flex-col bg-[#0A0A0F] border-l border-white/[0.06] px-6 pt-24 md:hidden"
+              className="fixed right-0 top-0 z-40 flex h-full w-72 flex-col bg-background border-l border-border px-6 pt-24 md:hidden"
             >
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
-                  href={link.href}
+                  href={isHomepage ? link.href : `/${link.href}`}
                   onClick={(e) => handleNavClick(e, link.href)}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + i * 0.05 }}
-                  className="border-b border-white/[0.06] py-4 text-lg text-[#E8E8ED]/70 transition-colors hover:text-white"
+                  className="border-b border-border py-4 text-lg text-foreground/70 transition-colors hover:text-heading"
                 >
                   {link.label}
                 </motion.a>
               ))}
               <motion.a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, "#contact")}
+                href={isHomepage ? "#contact" : "/#contact"}
+                onClick={handleGetStarted}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="mt-6 rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-[#0A0A0F]"
+                className="mt-6 rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground"
               >
                 Get Started
               </motion.a>

@@ -78,11 +78,8 @@ export default function IntakeForm() {
     setSubmitting(true);
 
     try {
-      // [FORM_ENDPOINT] — Replace with your actual form submission endpoint
-      // For now, logs to console and shows success state
+      // TODO: Replace with actual form submission endpoint
       console.log("Form submitted:", formData);
-
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       setSubmitted(true);
@@ -95,25 +92,21 @@ export default function IntakeForm() {
   };
 
   const inputClasses =
-    "w-full rounded-lg border border-white/[0.08] bg-surface px-4 py-3 text-sm text-white placeholder-[#E8E8ED]/30 transition-all focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/30";
-  const errorClasses = "mt-1 text-xs text-[#FF4444]";
+    "w-full rounded-lg border border-border bg-surface-elevated px-4 py-3 text-base text-heading placeholder-foreground/35 transition-all focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/15";
+  const errorClasses = "mt-1 text-sm text-danger";
 
   return (
     <section id="contact" className="relative py-24 lg:py-32">
-      {/* Background glow */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-accent/[0.04] blur-[120px]" />
-      </div>
-
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <span className="section-eyebrow text-accent">GET STARTED</span>
+            <h2 className="text-3xl font-bold tracking-tight text-heading sm:text-4xl lg:text-5xl">
               Let&apos;s Find{" "}
               <span className="text-accent-warm">$10,000+</span> in Hidden
               Revenue in Your Business
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-[#E8E8ED]/50">
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground/60">
               Fill out this 2-minute form and I&apos;ll send you a personalized
               video walkthrough of exactly what I&apos;d automate — free, no
               strings attached.
@@ -121,7 +114,7 @@ export default function IntakeForm() {
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.2}>
+        <AnimatedSection delay={0.15}>
           <div className="mx-auto mt-12 max-w-2xl">
             <AnimatePresence mode="wait">
               {submitted ? (
@@ -129,11 +122,11 @@ export default function IntakeForm() {
                   key="success"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="glass-card rounded-2xl p-12 text-center"
+                  className="section-container text-center"
                 >
-                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent/10">
                     <svg
-                      className="h-8 w-8 text-accent"
+                      className="h-7 w-7 text-accent"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -144,16 +137,16 @@ export default function IntakeForm() {
                       />
                     </svg>
                   </div>
-                  <h3 className="mt-6 text-2xl font-bold text-white">
+                  <h3 className="mt-5 text-2xl font-bold text-heading">
                     You&apos;re In!
                   </h3>
-                  <p className="mt-3 text-[#E8E8ED]/60">
+                  <p className="mt-3 text-foreground/60">
                     I&apos;ll review your submission and send you a personalized
                     Loom walkthrough within 24 hours. Keep an eye on your inbox.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 text-sm text-accent underline-offset-4 hover:underline"
+                    className="mt-5 text-sm text-accent underline-offset-4 hover:underline"
                   >
                     Submit another response
                   </button>
@@ -164,15 +157,14 @@ export default function IntakeForm() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   onSubmit={handleSubmit}
-                  className="glass-card rounded-2xl p-8 sm:p-10"
+                  className="section-container"
                   noValidate
                 >
                   <div className="grid gap-5 sm:grid-cols-2">
-                    {/* Full Name */}
                     <div>
                       <label
                         htmlFor="fullName"
-                        className="mb-1.5 block text-sm font-medium text-[#E8E8ED]/70"
+                        className="mb-1.5 block text-sm font-medium text-foreground/70"
                       >
                         Full Name *
                       </label>
@@ -190,11 +182,10 @@ export default function IntakeForm() {
                       )}
                     </div>
 
-                    {/* Business Name */}
                     <div>
                       <label
                         htmlFor="businessName"
-                        className="mb-1.5 block text-sm font-medium text-[#E8E8ED]/70"
+                        className="mb-1.5 block text-sm font-medium text-foreground/70"
                       >
                         Business Name *
                       </label>
@@ -212,11 +203,10 @@ export default function IntakeForm() {
                       )}
                     </div>
 
-                    {/* Website */}
                     <div>
                       <label
                         htmlFor="website"
-                        className="mb-1.5 block text-sm font-medium text-[#E8E8ED]/70"
+                        className="mb-1.5 block text-sm font-medium text-foreground/70"
                       >
                         Website URL
                       </label>
@@ -231,11 +221,10 @@ export default function IntakeForm() {
                       />
                     </div>
 
-                    {/* Email */}
                     <div>
                       <label
                         htmlFor="email"
-                        className="mb-1.5 block text-sm font-medium text-[#E8E8ED]/70"
+                        className="mb-1.5 block text-sm font-medium text-foreground/70"
                       >
                         Email Address *
                       </label>
@@ -253,11 +242,10 @@ export default function IntakeForm() {
                       )}
                     </div>
 
-                    {/* Industry */}
                     <div>
                       <label
                         htmlFor="industry"
-                        className="mb-1.5 block text-sm font-medium text-[#E8E8ED]/70"
+                        className="mb-1.5 block text-sm font-medium text-foreground/70"
                       >
                         Industry *
                       </label>
@@ -283,11 +271,10 @@ export default function IntakeForm() {
                       )}
                     </div>
 
-                    {/* Lead Volume */}
                     <div>
                       <label
                         htmlFor="leadVolume"
-                        className="mb-1.5 block text-sm font-medium text-[#E8E8ED]/70"
+                        className="mb-1.5 block text-sm font-medium text-foreground/70"
                       >
                         Monthly Leads/Inquiries
                       </label>
@@ -306,11 +293,10 @@ export default function IntakeForm() {
                       </select>
                     </div>
 
-                    {/* Budget */}
                     <div className="sm:col-span-2">
                       <label
                         htmlFor="budget"
-                        className="mb-1.5 block text-sm font-medium text-[#E8E8ED]/70"
+                        className="mb-1.5 block text-sm font-medium text-foreground/70"
                       >
                         Budget Range
                       </label>
@@ -329,11 +315,10 @@ export default function IntakeForm() {
                       </select>
                     </div>
 
-                    {/* Headache */}
                     <div className="sm:col-span-2">
                       <label
                         htmlFor="headache"
-                        className="mb-1.5 block text-sm font-medium text-[#E8E8ED]/70"
+                        className="mb-1.5 block text-sm font-medium text-foreground/70"
                       >
                         What&apos;s your biggest operational headache right now? *
                       </label>
@@ -352,30 +337,13 @@ export default function IntakeForm() {
                     </div>
                   </div>
 
-                  {/* Submit */}
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="mt-8 w-full rounded-lg bg-accent px-8 py-4 text-base font-semibold text-[#0A0A0F] transition-all hover:bg-accent/90 hover:shadow-[0_0_30px_rgba(0,212,255,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="mt-7 w-full rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-accent-foreground transition-all hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {submitting ? "Submitting..." : "Get My Free AI Audit"}
                   </button>
-
-                  {/* Calendly alternative */}
-                  <div className="mt-6 text-center">
-                    <p className="text-sm text-[#E8E8ED]/40">
-                      Or, if you&apos;d rather talk live:
-                    </p>
-                    {/* [CALENDLY_LINK] — Replace with your Calendly URL */}
-                    <a
-                      href="[CALENDLY_LINK]"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-2 inline-block text-sm font-medium text-accent underline-offset-4 hover:underline"
-                    >
-                      Book a Call Instead
-                    </a>
-                  </div>
                 </motion.form>
               )}
             </AnimatePresence>

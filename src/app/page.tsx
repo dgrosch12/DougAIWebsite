@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import LogoMarquee from "@/components/LogoMarquee";
 import Problem from "@/components/Problem";
 import Solutions from "@/components/Solutions";
 import HowItWorks from "@/components/HowItWorks";
@@ -14,6 +15,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
+        <LogoMarquee />
         <Problem />
         <Solutions />
         <HowItWorks />

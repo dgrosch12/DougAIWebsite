@@ -1,158 +1,131 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import AnimatedSection from "./AnimatedSection";
+import { products, cardThemes } from "@/lib/products";
 
-interface Product {
-  name: string;
-  tagline: string;
-  bullets: string[];
-  pricing: string;
-  bestFor: string;
-  details: string;
-}
-
-const products: Product[] = [
-  {
-    name: "Speed-to-Lead System",
-    tagline: "Connect with every lead within 10 seconds of form submission",
-    bullets: [
-      "Automated conference call connecting you to the lead instantly",
-      "Hangup detection & intelligent callback system",
-      "Spam filtering & lead qualification",
-      "Works with any web form, CRM, or landing page",
-    ],
-    pricing: "Starting at $2,500 setup + $400/month",
-    bestFor: "HVAC, plumbing, roofing, electrical, pest control, home services",
-    details:
-      "The Speed-to-Lead System monitors your web forms 24/7. The moment a lead submits a form, the system instantly initiates a conference call — connecting you directly with the prospect while they're still on your website. It includes intelligent hangup detection that triggers automatic callbacks, spam filtering to save you from junk leads, and full lead qualification scoring. Integrates with any web form, CRM, or landing page you're currently using.",
-  },
-  {
-    name: "AI Blog Automation System",
-    tagline: "Publish 30+ SEO-optimized blog posts per month on autopilot",
-    bullets: [
-      "AI-generated content matched to your brand voice",
-      "Keyword research & SEO optimization built in",
-      "Auto-publishes directly to Webflow, WordPress, or Brizy",
-      "Performance tracking & content calendar management",
-    ],
-    pricing: "Starting at $3,000 setup + $750/month",
-    bestFor: "Marketing agencies, web design firms, businesses that need content at scale",
-    details:
-      "Stop paying writers thousands for a handful of blog posts. This system generates 30+ high-quality, SEO-optimized articles per month — matched to your brand voice and target keywords. It handles keyword research, content planning, writing, editing, image selection, and publishing — all automatically. Posts are published directly to your Webflow, WordPress, or Brizy site on a schedule you control. Includes a performance dashboard to track rankings and traffic.",
-  },
-  {
-    name: "AI Hiring & Screening System",
-    tagline: "Screen hundreds of applicants in minutes, not days",
-    bullets: [
-      "AI scores and ranks every candidate against your criteria",
-      "Custom screening rubrics tailored to your role",
-      "Automated tier assignments (S/A/B/C/F)",
-      "Integrates with Google Forms, Typeform, or any application source",
-    ],
-    pricing: "Starting at $3,000 setup + $500/month",
-    bestFor: "Recruiting firms, growing companies, high-volume hiring",
-    details:
-      "Every applicant is automatically scored and ranked against your custom criteria the moment they apply. The system assigns tier ratings (S/A/B/C/F) based on screening rubrics you define — experience, skills, culture fit, deal-breakers, and more. You get a ranked shortlist of top candidates within minutes of receiving applications, not days. Works with Google Forms, Typeform, or any existing application source.",
-  },
-  {
-    name: "Job Scraping & Lead Enrichment",
-    tagline: "Find, verify, and enrich leads from any source automatically",
-    bullets: [
-      "Multi-source scraping (job boards, directories, Google Maps)",
-      "Automated email finding & verification",
-      "AI-powered data enrichment & qualification",
-      "Clean, deduplicated lead lists delivered to your CRM",
-    ],
-    pricing: "Starting at $2,000 setup + $300/month",
-    bestFor: "Recruiting firms, sales teams, agencies doing outbound",
-    details:
-      "This system automatically scrapes leads from job boards, business directories, Google Maps, and other public sources. Each lead is enriched with verified email addresses, company data, and AI-powered qualification scores. Duplicates are removed, data is cleaned, and the final lead lists are delivered directly to your CRM — ready for outreach. Perfect for recruiting firms and sales teams doing outbound prospecting at scale.",
-  },
-  {
-    name: "Custom AI Build",
-    tagline: "Got a unique workflow? I'll automate it.",
-    bullets: [
-      "End-to-end discovery, design, and deployment",
-      "Built on n8n, Supabase, and leading AI APIs",
-      "Full ownership of your system — no vendor lock-in",
-      "Ongoing support & optimization available",
-    ],
-    pricing: "Starting at $5,000+",
-    bestFor: "Any business with repetitive processes eating up time and money",
-    details:
-      "If you have a unique workflow that doesn't fit neatly into one of my productized systems, I'll build something custom. We start with a discovery session to map your process, then I design and deploy a tailored automation system. Everything is built on n8n, Supabase, and leading AI APIs — you own the entire system with no vendor lock-in. Ongoing support and optimization are available to keep everything running smoothly.",
-  },
+const cardIcons = [
+  <svg
+    key="bolt"
+    className="h-6 w-6"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+    />
+  </svg>,
+  <svg
+    key="doc"
+    className="h-6 w-6"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+    />
+  </svg>,
+  <svg
+    key="people"
+    className="h-6 w-6"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
+    />
+  </svg>,
+  <svg
+    key="search"
+    className="h-6 w-6"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+    />
+  </svg>,
+  <svg
+    key="wrench"
+    className="h-6 w-6"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M11.42 15.17l-5.25 5.25a2.121 2.121 0 01-3-3l5.25-5.25m3-3l2.83-2.83a2.121 2.121 0 013 0l.17.17a2.121 2.121 0 010 3l-2.83 2.83m-3-3l3 3M3.375 7.5h3.008c.478 0 .936.19 1.273.529l.454.454a1.8 1.8 0 001.274.529h1.99a1.8 1.8 0 001.273-.529l.454-.454c.338-.339.795-.529 1.273-.529H17.25"
+    />
+  </svg>,
 ];
 
-function ProductCard({ product, index }: { product: Product; index: number }) {
-  const [expanded, setExpanded] = useState(false);
+function ProductCard({ index }: { index: number }) {
+  const product = products[index];
+  const theme = cardThemes[index];
 
   return (
-    <AnimatedSection delay={index * 0.1}>
-      <motion.div
-        whileHover={{ scale: 1.01 }}
-        transition={{ duration: 0.2 }}
-        className="glass-card group relative flex h-full flex-col rounded-2xl p-8"
-      >
-        {/* Hover glow */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/[0.03] to-transparent opacity-0 transition-opacity group-hover:opacity-100 pointer-events-none" />
+    <AnimatedSection delay={index * 0.08}>
+      <Link href={`/solutions/${product.slug}`} className="block h-full">
+        <div
+          className={`group relative flex h-full flex-col rounded-xl border p-7 lg:p-8 transition-colors ${theme.tintClass}`}
+        >
+          <div className="flex flex-1 flex-col">
+            <div
+              className={`flex h-12 w-12 items-center justify-center rounded-lg ${theme.iconBg} ${theme.iconColor}`}
+            >
+              {cardIcons[index]}
+            </div>
 
-        <div className="relative flex flex-1 flex-col">
-          <h3 className="text-xl font-bold text-white">{product.name}</h3>
-          <p className="mt-2 text-[#E8E8ED]/60">{product.tagline}</p>
+            <h3 className="mt-5 text-xl lg:text-[1.375rem] font-bold text-heading">
+              {product.name}
+            </h3>
 
-          <ul className="mt-5 flex-1 space-y-3">
-            {product.bullets.map((bullet, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm text-[#E8E8ED]/70">
+            <p className="mt-2.5 flex-1 text-[0.9375rem] text-foreground/60 leading-relaxed">
+              {product.tagline}
+            </p>
+
+            <div className="mt-5">
+              <span
+                className="inline-flex items-center gap-2 text-sm font-medium transition-all group-hover:gap-3"
+                style={{ color: theme.accentColor }}
+              >
+                Learn More
                 <svg
-                  className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent"
+                  className="h-4 w-4"
                   viewBox="0 0 20 20"
-                  fill="currentColor"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
                 >
                   <path
-                    fillRule="evenodd"
-                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                    clipRule="evenodd"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 10h10m-4-4l4 4-4 4"
                   />
                 </svg>
-                {bullet}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-6 border-t border-white/[0.06] pt-5">
-            <p className="text-lg font-bold text-accent">{product.pricing}</p>
-            <p className="mt-1 text-xs text-[#E8E8ED]/40">
-              Best for: {product.bestFor}
-            </p>
+              </span>
+            </div>
           </div>
-
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="mt-5 rounded-lg border border-white/[0.1] px-5 py-2.5 text-sm font-medium text-white transition-all hover:border-accent/40 hover:bg-accent/5"
-          >
-            {expanded ? "Show Less" : "Learn More"}
-          </button>
-
-          <AnimatePresence>
-            {expanded && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <p className="mt-4 text-sm leading-relaxed text-[#E8E8ED]/50">
-                  {product.details}
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
-      </motion.div>
+      </Link>
     </AnimatedSection>
   );
 }
@@ -163,20 +136,26 @@ export default function Solutions() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <span className="section-eyebrow text-accent">SOLUTIONS</span>
+            <h2 className="text-3xl font-bold tracking-tight text-heading sm:text-4xl lg:text-5xl">
               AI Systems You Can Buy{" "}
               <span className="gradient-text">Today</span>
             </h2>
-            <p className="mt-4 text-lg text-[#E8E8ED]/50">
+            <p className="mt-4 text-lg text-foreground/60">
               Productized solutions — pick what you need, deployed in days.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {products.map((product, i) => (
-            <ProductCard key={i} product={product} index={i} />
-          ))}
+        <div className="section-container mt-14">
+          <div className="grid gap-6 md:grid-cols-2">
+            {products.slice(0, 4).map((_, i) => (
+              <ProductCard key={i} index={i} />
+            ))}
+          </div>
+          <div className="mt-6">
+            <ProductCard index={4} />
+          </div>
         </div>
       </div>
     </section>
