@@ -2,15 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
-
 const navLinks = [
   { label: "Solutions", href: "#solutions" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Results", href: "#results" },
-  { label: "About", href: "#about" },
+  { label: "Get Started", href: "#contact" },
 ];
 
 export default function Navigation() {
@@ -73,10 +69,7 @@ export default function Navigation() {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? "bg-background/80 backdrop-blur-xl border-b border-border"
@@ -115,19 +108,17 @@ export default function Navigation() {
                   {link.label}
                 </a>
               ))}
-              <ThemeToggle />
               <a
                 href={isHomepage ? "#contact" : "/#contact"}
                 onClick={handleGetStarted}
                 className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-all hover:bg-accent-hover"
               >
-                Get Started
+                Free AI Audit
               </a>
             </div>
 
             {/* Mobile: theme toggle + hamburger */}
             <div className="flex items-center gap-3 md:hidden">
-              <ThemeToggle />
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="relative z-50 flex h-10 w-10 items-center justify-center"
@@ -154,7 +145,7 @@ export default function Navigation() {
             </div>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Mobile slide-in drawer */}
       <AnimatePresence>
@@ -174,29 +165,23 @@ export default function Navigation() {
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className="fixed right-0 top-0 z-40 flex h-full w-72 flex-col bg-background border-l border-border px-6 pt-24 md:hidden"
             >
-              {navLinks.map((link, i) => (
-                <motion.a
+              {navLinks.map((link) => (
+                <a
                   key={link.href}
                   href={isHomepage ? link.href : `/${link.href}`}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.05 }}
                   className="border-b border-border py-4 text-lg text-foreground/70 transition-colors hover:text-heading"
                 >
                   {link.label}
-                </motion.a>
+                </a>
               ))}
-              <motion.a
+              <a
                 href={isHomepage ? "#contact" : "/#contact"}
                 onClick={handleGetStarted}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
                 className="mt-6 rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground"
               >
-                Get Started
-              </motion.a>
+                Free AI Audit
+              </a>
             </motion.div>
           </>
         )}

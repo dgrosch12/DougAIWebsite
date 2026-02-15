@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  /* Light mode defaults */
-  --color-background: #FFFFFF;
-  --color-foreground: #52525B;
-  --color-heading: #09090B;
-  --color-surface: #FFFFFF;
-  --color-surface-alt: #F8FAFC;
-  --color-surface-elevated: #F4F4F5;
-  --color-accent: #2563EB;
-  --color-accent-hover: #1D4ED8;
-  --color-accent-muted: #EFF6FF;
-  --color-accent-foreground: #FFFFFF;
-  --color-accent-warm: #D97706;
-  --color-danger: #DC2626;
-  --color-border: #E4E4E7;
-  --color-border-hover: #93C5FD;
+  --color-background: #0A0A0F;
+  --color-foreground: #A1A1AA;
+  --color-heading: #FAFAFA;
+  --color-surface: #12121A;
+  --color-surface-alt: #0D0D14;
+  --color-surface-elevated: #27272A;
+  --color-accent: #00D4FF;
+  --color-accent-hover: #33DDFF;
+  --color-accent-muted: #002A33;
+  --color-accent-foreground: #0A0A0F;
+  --color-accent-warm: #FFB800;
+  --color-gold: #FFB800;
+  --color-danger: #EF4444;
+  --color-border: #1E1E2A;
+  --color-border-hover: #00D4FF;
   --font-heading: "Bricolage Grotesque", system-ui, sans-serif;
   --font-body: "Instrument Sans", system-ui, sans-serif;
 }
@@ -24,25 +24,7 @@
   html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: #D4D4D8 #FFFFFF;
-  }
-
-  html.dark {
-    --color-background: #09090B;
-    --color-foreground: #A1A1AA;
-    --color-heading: #FAFAFA;
-    --color-surface: #18181B;
-    --color-surface-alt: #0F0F13;
-    --color-surface-elevated: #27272A;
-    --color-accent: #3B82F6;
-    --color-accent-hover: #60A5FA;
-    --color-accent-muted: #172554;
-    --color-accent-foreground: #FFFFFF;
-    --color-accent-warm: #F59E0B;
-    --color-danger: #EF4444;
-    --color-border: #27272A;
-    --color-border-hover: #3B82F6;
-    scrollbar-color: #27272A #09090B;
+    scrollbar-color: #1E1E2A #0A0A0F;
   }
 
   body {
@@ -68,40 +50,17 @@
   }
 }
 
-/* Section container */
-.section-container {
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  background: var(--color-surface);
-  padding: 2rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-}
-
-html.dark .section-container {
-  box-shadow: none;
-}
-
-@media (min-width: 640px) {
-  .section-container { padding: 2.5rem; }
-}
-
-@media (min-width: 1024px) {
-  .section-container { padding: 3rem; }
-}
-
-/* Section eyebrow */
-.section-eyebrow {
-  display: inline-block;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.75rem;
+/* Headline XL */
+.headline-xl {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+  background: linear-gradient(135deg, #00D4FF, #00B8E0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -109,45 +68,34 @@ html.dark .section-container {
 
 /* Hero gradient */
 .hero-gradient {
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.04), transparent);
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 212, 255, 0.08), transparent),
+              radial-gradient(ellipse 50% 50% at 20% 80%, rgba(0, 212, 255, 0.03), transparent);
 }
 
-html.dark .hero-gradient {
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.08), transparent),
-              radial-gradient(ellipse 50% 50% at 20% 80%, rgba(59, 130, 246, 0.03), transparent);
+/* Solution card base */
+.solution-card {
+  cursor: pointer;
 }
 
-/* Colored card tints — light mode */
-.card-blue { background: rgba(37, 99, 235, 0.03); border-color: rgba(37, 99, 235, 0.10); }
-.card-blue:hover { border-color: rgba(37, 99, 235, 0.25); }
+.solution-card:hover {
+  transform: translateY(-2px);
+}
 
-.card-emerald { background: rgba(16, 185, 129, 0.03); border-color: rgba(16, 185, 129, 0.10); }
-.card-emerald:hover { border-color: rgba(16, 185, 129, 0.25); }
+/* Colored card tints */
+.card-blue { background: rgba(0, 212, 255, 0.08); border-color: rgba(0, 212, 255, 0.18); }
+.card-blue:hover { border-color: rgba(0, 212, 255, 0.4); background: rgba(0, 212, 255, 0.12); }
 
-.card-violet { background: rgba(139, 92, 246, 0.03); border-color: rgba(139, 92, 246, 0.10); }
-.card-violet:hover { border-color: rgba(139, 92, 246, 0.25); }
+.card-emerald { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.18); }
+.card-emerald:hover { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.12); }
 
-.card-amber { background: rgba(245, 158, 11, 0.03); border-color: rgba(245, 158, 11, 0.10); }
-.card-amber:hover { border-color: rgba(245, 158, 11, 0.25); }
+.card-violet { background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.18); }
+.card-violet:hover { border-color: rgba(139, 92, 246, 0.4); background: rgba(139, 92, 246, 0.12); }
 
-.card-rose { background: rgba(244, 63, 94, 0.03); border-color: rgba(244, 63, 94, 0.10); }
-.card-rose:hover { border-color: rgba(244, 63, 94, 0.25); }
+.card-amber { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.18); }
+.card-amber:hover { border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.12); }
 
-/* Colored card tints — dark mode */
-html.dark .card-blue { background: rgba(59, 130, 246, 0.06); border-color: rgba(59, 130, 246, 0.12); }
-html.dark .card-blue:hover { border-color: rgba(59, 130, 246, 0.25); }
-
-html.dark .card-emerald { background: rgba(16, 185, 129, 0.06); border-color: rgba(16, 185, 129, 0.12); }
-html.dark .card-emerald:hover { border-color: rgba(16, 185, 129, 0.25); }
-
-html.dark .card-violet { background: rgba(139, 92, 246, 0.06); border-color: rgba(139, 92, 246, 0.12); }
-html.dark .card-violet:hover { border-color: rgba(139, 92, 246, 0.25); }
-
-html.dark .card-amber { background: rgba(245, 158, 11, 0.06); border-color: rgba(245, 158, 11, 0.12); }
-html.dark .card-amber:hover { border-color: rgba(245, 158, 11, 0.25); }
-
-html.dark .card-rose { background: rgba(244, 63, 94, 0.06); border-color: rgba(244, 63, 94, 0.12); }
-html.dark .card-rose:hover { border-color: rgba(244, 63, 94, 0.25); }
+.card-rose { background: rgba(244, 63, 94, 0.08); border-color: rgba(244, 63, 94, 0.18); }
+.card-rose:hover { border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.12); }
 
 /* Marquee animation */
 @keyframes marquee {
@@ -156,7 +104,7 @@ html.dark .card-rose:hover { border-color: rgba(244, 63, 94, 0.25); }
 }
 
 .marquee-track {
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
 }
 
 .marquee-track:hover {

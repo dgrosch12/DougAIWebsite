@@ -39,7 +39,7 @@ function AnimatedCounter({ value, suffix, label }: StatProps) {
 
   return (
     <div ref={ref} className="text-center">
-      <p className="text-4xl font-bold sm:text-5xl lg:text-6xl text-accent">
+      <p className="text-4xl font-bold sm:text-5xl text-[#FFB800]">
         {count}
         {suffix}
       </p>
@@ -65,7 +65,6 @@ const testimonials = [
     company: "Elite HVAC Solutions",
     industry: "Home Services",
     initials: "MT",
-    colorClass: "bg-accent/15 text-accent",
   },
   {
     quote:
@@ -74,7 +73,6 @@ const testimonials = [
     company: "Bright Digital Agency",
     industry: "Marketing Agency",
     initials: "SK",
-    colorClass: "bg-accent-warm/15 text-accent-warm",
   },
   {
     quote:
@@ -83,37 +81,33 @@ const testimonials = [
     company: "Apex Staffing Group",
     industry: "Recruiting",
     initials: "JR",
-    colorClass: "bg-[#8B5CF6]/15 text-[#8B5CF6]",
   },
 ];
 
-export default function Results() {
+export default function SocialProof() {
   return (
-    <section id="results" className="relative py-24 lg:py-32">
+    <section className="relative py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center">
-            <span className="section-eyebrow text-accent">RESULTS</span>
-            <h2 className="text-3xl font-bold tracking-tight text-heading sm:text-4xl">
-              What Happens When You{" "}
-              <span className="gradient-text">Automate</span>
+            <h2 className="headline-xl text-heading">
+              The{" "}
+              <span className="gradient-text">Numbers</span>
             </h2>
           </div>
         </AnimatedSection>
 
-        <div className="section-container mt-14">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-10">
+        <AnimatedSection>
+          <div className="mt-14 grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-10">
             {stats.map((stat, i) => (
-              <AnimatedSection key={i} delay={i * 0.08}>
-                <AnimatedCounter {...stat} />
-              </AnimatedSection>
+              <AnimatedCounter key={i} {...stat} />
             ))}
           </div>
-        </div>
+        </AnimatedSection>
 
         <div className="mt-20 grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial, i) => (
-            <AnimatedSection key={i} delay={i * 0.1}>
+            <AnimatedSection key={i}>
               <div className="relative flex h-full flex-col rounded-xl border border-border bg-surface p-7 lg:p-8 transition-colors hover:border-border-hover">
                 <span className="absolute top-5 left-7 text-5xl font-bold leading-none text-accent/15">
                   &ldquo;
@@ -125,9 +119,7 @@ export default function Results() {
                   </p>
 
                   <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
-                    <div
-                      className={`flex h-9 w-9 items-center justify-center rounded-full text-xs font-bold ${testimonial.colorClass}`}
-                    >
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent text-xs font-bold">
                       {testimonial.initials}
                     </div>
                     <div>

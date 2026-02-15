@@ -5,9 +5,10 @@ import AnimatedSection from "./AnimatedSection";
 import { products, cardThemes } from "@/lib/products";
 
 const cardIcons = [
+  // Bolt - Speed to Lead
   <svg
     key="bolt"
-    className="h-6 w-6"
+    className="h-7 w-7"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -19,9 +20,10 @@ const cardIcons = [
       d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
     />
   </svg>,
+  // Document - Blog Automation
   <svg
     key="doc"
-    className="h-6 w-6"
+    className="h-7 w-7"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -33,9 +35,10 @@ const cardIcons = [
       d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
     />
   </svg>,
+  // People - Hiring
   <svg
     key="people"
-    className="h-6 w-6"
+    className="h-7 w-7"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -47,9 +50,10 @@ const cardIcons = [
       d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
     />
   </svg>,
+  // Search - Lead Enrichment
   <svg
     key="search"
-    className="h-6 w-6"
+    className="h-7 w-7"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -61,9 +65,10 @@ const cardIcons = [
       d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
     />
   </svg>,
+  // Wrench - Custom Build
   <svg
     key="wrench"
-    className="h-6 w-6"
+    className="h-7 w-7"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -77,35 +82,48 @@ const cardIcons = [
   </svg>,
 ];
 
+function extractStartingPrice(pricing: string): string {
+  const match = pricing.match(/\$[\d,]+/);
+  return match ? `From ${match[0]}` : "";
+}
+
 function ProductCard({ index }: { index: number }) {
   const product = products[index];
   const theme = cardThemes[index];
 
   return (
-    <AnimatedSection delay={index * 0.08}>
+    <AnimatedSection>
       <Link href={`/solutions/${product.slug}`} className="block h-full">
         <div
-          className={`group relative flex h-full flex-col rounded-xl border p-7 lg:p-8 transition-colors ${theme.tintClass}`}
+          className={`solution-card group relative flex h-full flex-col rounded-2xl border-2 transition-all duration-300 ${theme.tintClass}`}
         >
-          <div className="flex flex-1 flex-col">
+          {/* Icon area */}
+          <div className="px-7 pt-7 lg:px-8 lg:pt-8">
             <div
-              className={`flex h-12 w-12 items-center justify-center rounded-lg ${theme.iconBg} ${theme.iconColor}`}
+              className={`inline-flex h-14 w-14 items-center justify-center rounded-xl ${theme.iconBg} ${theme.iconColor}`}
             >
               {cardIcons[index]}
             </div>
+          </div>
 
-            <h3 className="mt-5 text-xl lg:text-[1.375rem] font-bold text-heading">
+          {/* Content */}
+          <div className="flex flex-1 flex-col px-7 pb-7 pt-5 lg:px-8 lg:pb-8">
+            <h3 className="text-xl lg:text-2xl font-bold text-heading leading-tight">
               {product.name}
             </h3>
 
-            <p className="mt-2.5 flex-1 text-[0.9375rem] text-foreground/60 leading-relaxed">
-              {product.tagline}
+            <p className="mt-3 flex-1 text-[0.9375rem] text-foreground/60 leading-relaxed line-clamp-3">
+              {product.heroDescription}
             </p>
 
-            <div className="mt-5">
+            {/* Bottom row */}
+            <div className="mt-6 flex items-center justify-between">
               <span
-                className="inline-flex items-center gap-2 text-sm font-medium transition-all group-hover:gap-3"
-                style={{ color: theme.accentColor }}
+                className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 group-hover:gap-3"
+                style={{
+                  backgroundColor: `${theme.accentColor}15`,
+                  color: theme.accentColor,
+                }}
               >
                 Learn More
                 <svg
@@ -122,6 +140,9 @@ function ProductCard({ index }: { index: number }) {
                   />
                 </svg>
               </span>
+              <span className="text-xs font-medium text-foreground/40">
+                {extractStartingPrice(product.pricing)}
+              </span>
             </div>
           </div>
         </div>
@@ -132,29 +153,30 @@ function ProductCard({ index }: { index: number }) {
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="relative py-24 lg:py-32">
+    <section id="solutions" className="relative py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center">
-            <span className="section-eyebrow text-accent">SOLUTIONS</span>
-            <h2 className="text-3xl font-bold tracking-tight text-heading sm:text-4xl lg:text-5xl">
-              AI Systems You Can Buy{" "}
-              <span className="gradient-text">Today</span>
+            <h2 className="headline-xl text-heading">
+              What I{" "}
+              <span className="gradient-text">Build</span>
             </h2>
             <p className="mt-4 text-lg text-foreground/60">
-              Productized solutions — pick what you need, deployed in days.
+              Productized AI systems. Pick what fits — running in your business within days.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="section-container mt-14">
-          <div className="grid gap-6 md:grid-cols-2">
-            {products.slice(0, 4).map((_, i) => (
+        <div className="mt-14">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {products.slice(0, 3).map((_, i) => (
               <ProductCard key={i} index={i} />
             ))}
           </div>
-          <div className="mt-6">
-            <ProductCard index={4} />
+          <div className="mt-5 grid gap-5 sm:grid-cols-2">
+            {products.slice(3, 5).map((_, i) => (
+              <ProductCard key={i + 3} index={i + 3} />
+            ))}
           </div>
         </div>
       </div>

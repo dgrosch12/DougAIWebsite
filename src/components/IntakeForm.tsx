@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, FormEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 
 interface FormData {
@@ -13,6 +14,7 @@ interface FormData {
   leadVolume: string;
   budget: string;
   email: string;
+  interestedProduct: string;
 }
 
 const initialFormData: FormData = {
@@ -24,6 +26,7 @@ const initialFormData: FormData = {
   leadVolume: "",
   budget: "",
   email: "",
+  interestedProduct: "",
 };
 
 interface FormErrors {
@@ -31,10 +34,18 @@ interface FormErrors {
 }
 
 export default function IntakeForm() {
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    const product = searchParams.get("product");
+    if (product) {
+      setFormData((prev) => ({ ...prev, interestedProduct: product }));
+    }
+  }, [searchParams]);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -100,21 +111,21 @@ export default function IntakeForm() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center">
-            <span className="section-eyebrow text-accent">GET STARTED</span>
-            <h2 className="text-3xl font-bold tracking-tight text-heading sm:text-4xl lg:text-5xl">
-              Let&apos;s Find{" "}
-              <span className="text-accent-warm">$10,000+</span> in Hidden
-              Revenue in Your Business
+            <h2 className="headline-xl text-heading">
+              Tell Me About{" "}
+              <span className="gradient-text">Your Business</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground/60">
-              Fill out this 2-minute form and I&apos;ll send you a personalized
-              video walkthrough of exactly what I&apos;d automate — free, no
-              strings attached.
+              Quick form, no sales calls. I&apos;ll send you a Loom video
+              walking through exactly what I&apos;d automate and why.
+            </p>
+            <p className="mt-2 text-sm text-foreground/40">
+              You&apos;ll have it in your inbox within 24 hours.
             </p>
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.15}>
+        <AnimatedSection>
           <div className="mx-auto mt-12 max-w-2xl">
             <AnimatePresence mode="wait">
               {submitted ? (
@@ -122,7 +133,7 @@ export default function IntakeForm() {
                   key="success"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="section-container text-center"
+                  className="rounded-xl border border-border bg-surface p-8 lg:p-10 text-center"
                 >
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent/10">
                     <svg
@@ -157,7 +168,7 @@ export default function IntakeForm() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   onSubmit={handleSubmit}
-                  className="section-container"
+                  className="rounded-xl border border-border bg-surface p-8 lg:p-10"
                   noValidate
                 >
                   <div className="grid gap-5 sm:grid-cols-2">
@@ -342,7 +353,9 @@ export default function IntakeForm() {
                     disabled={submitting}
                     className="mt-7 w-full rounded-lg bg-accent px-8 py-4 text-lg font-semibold text-accent-foreground transition-all hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {submitting ? "Submitting..." : "Get My Free AI Audit"}
+                    {submitting
+                      ? "Submitting..."
+                      : "Send It Over"}
                   </button>
                 </motion.form>
               )}

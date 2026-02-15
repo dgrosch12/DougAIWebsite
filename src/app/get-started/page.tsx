@@ -1,21 +1,20 @@
 import { Suspense } from "react";
+import { Metadata } from "next";
 import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import LogoMarquee from "@/components/LogoMarquee";
-import Solutions from "@/components/Solutions";
-import SocialProof from "@/components/SocialProof";
 import IntakeForm from "@/components/IntakeForm";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Get Started — Douglas AI",
+  description:
+    "Quick form, no sales calls. I'll send you a Loom walkthrough of exactly what I'd automate in your business.",
+};
+
+export default function GetStartedPage() {
   return (
     <>
       <Navigation />
-      <main>
-        <Hero />
-        <LogoMarquee />
-        <Solutions />
-        <SocialProof />
+      <main className="pt-16">
         <Suspense>
           <IntakeForm />
         </Suspense>
