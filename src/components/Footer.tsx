@@ -5,6 +5,7 @@ import Link from "next/link";
 import { products } from "@/lib/products";
 
 const footerLinks = [
+  { label: "Process", href: "#process" },
   { label: "Solutions", href: "#solutions" },
   { label: "Get Started", href: "#contact" },
 ];
@@ -37,9 +38,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-surface-alt py-14">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
+    <footer className="relative bg-[#172B36] py-14">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3">
           {/* Brand + about blurb */}
@@ -48,20 +47,20 @@ export default function Footer() {
               <a
                 href="#"
                 onClick={handleLogoClick}
-                className="text-lg font-bold tracking-tight text-heading font-heading"
+                className="text-lg font-bold tracking-tight text-white"
               >
-                Douglas<span className="text-accent">AI</span>
+                Douglas<span className="gradient-text">AI</span>
               </a>
             ) : (
               <Link
                 href="/"
                 onClick={handleLogoClick}
-                className="text-lg font-bold tracking-tight text-heading font-heading"
+                className="text-lg font-bold tracking-tight text-white"
               >
-                Douglas<span className="text-accent">AI</span>
+                Douglas<span className="gradient-text">AI</span>
               </Link>
             )}
-            <p className="mt-3 text-sm text-foreground/55 leading-relaxed max-w-xs">
+            <p className="mt-3 text-sm text-white/60 leading-relaxed max-w-xs">
               I&apos;m Douglas. I build AI automation systems for small
               businesses — 23+ deployed and running on n8n, Supabase, and
               leading AI APIs.
@@ -70,13 +69,13 @@ export default function Footer() {
 
           {/* Solutions links */}
           <div>
-            <p className="text-sm font-semibold text-heading mb-4">Solutions</p>
+            <p className="text-sm font-semibold text-white mb-4">Solutions</p>
             <nav className="flex flex-col gap-2.5">
               {products.map((product) => (
                 <Link
                   key={product.slug}
                   href={`/solutions/${product.slug}`}
-                  className="text-sm text-foreground/55 transition-colors hover:text-heading"
+                  className="text-sm text-white/60 transition-colors hover:text-[#5B9FEA]"
                 >
                   {product.name}
                 </Link>
@@ -86,14 +85,14 @@ export default function Footer() {
 
           {/* Navigation + social */}
           <div>
-            <p className="text-sm font-semibold text-heading mb-4">Company</p>
+            <p className="text-sm font-semibold text-white mb-4">Company</p>
             <nav className="flex flex-col gap-2.5">
               {footerLinks.map((link) => (
                 <a
                   key={link.href}
                   href={isHomepage ? link.href : `/${link.href}`}
                   onClick={(e) => handleClick(e, link.href)}
-                  className="text-sm text-foreground/55 transition-colors hover:text-heading"
+                  className="text-sm text-white/60 transition-colors hover:text-[#5B9FEA]"
                 >
                   {link.label}
                 </a>
@@ -104,7 +103,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/douglas-grosch/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-foreground/50 transition-all hover:border-accent/30 hover:text-heading"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-white/50 transition-all hover:border-[#5B9FEA]/30 hover:text-[#5B9FEA]"
                 aria-label="LinkedIn"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -115,7 +114,7 @@ export default function Footer() {
                 href="https://www.youtube.com/@dougbuilds"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-foreground/50 transition-all hover:border-accent/30 hover:text-heading"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-white/50 transition-all hover:border-[#5B9FEA]/30 hover:text-[#5B9FEA]"
                 aria-label="YouTube"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -126,7 +125,7 @@ export default function Footer() {
                 href="https://www.instagram.com/douglasgrosch_/?hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-foreground/50 transition-all hover:border-accent/30 hover:text-heading"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-white/50 transition-all hover:border-[#5B9FEA]/30 hover:text-[#5B9FEA]"
                 aria-label="Instagram"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -137,8 +136,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-border pt-8 text-center">
-          <p className="text-sm text-foreground/35">
+        <div className="mt-10 border-t border-white/10 pt-8 text-center">
+          <p className="text-sm text-white/35">
             &copy; {new Date().getFullYear()} Douglas AI. All rights reserved.
           </p>
         </div>

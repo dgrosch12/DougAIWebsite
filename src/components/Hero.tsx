@@ -1,5 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
+const NetworkGrid = dynamic(() => import("./DotGrid"), { ssr: false });
+
 const socials = [
   {
     label: "LinkedIn",
@@ -41,8 +45,13 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden hero-gradient">
-      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-32 pb-16 text-center lg:pt-40 lg:pb-20">
+    <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
+      <NetworkGrid />
+      {/* Soft background blob */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="h-[400px] w-[600px] rounded-full bg-surface blur-[100px]" />
+      </div>
+      <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center">
         <h1 className="headline-xl mx-auto max-w-4xl text-heading">
           AI Automation That{" "}
           <span className="gradient-text">Actually Delivers an ROI</span>
@@ -76,7 +85,7 @@ export default function Hero() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/70 transition-colors hover:text-accent"
+              className="text-foreground/40 transition-colors hover:text-accent"
               aria-label={social.label}
             >
               {social.icon}

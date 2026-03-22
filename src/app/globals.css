@@ -1,30 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0A0A0F;
-  --color-foreground: #A1A1AA;
-  --color-heading: #FAFAFA;
-  --color-surface: #12121A;
-  --color-surface-alt: #0D0D14;
-  --color-surface-elevated: #27272A;
-  --color-accent: #00D4FF;
-  --color-accent-hover: #33DDFF;
-  --color-accent-muted: #002A33;
-  --color-accent-foreground: #0A0A0F;
-  --color-accent-warm: #FFB800;
-  --color-gold: #FFB800;
+  --color-background: #F3F5F7;
+  --color-foreground: #114C5A;
+  --color-heading: #172B36;
+  --color-surface: #E8ECEE;
+  --color-surface-alt: #172B36;
+  --color-surface-elevated: #FFFFFF;
+  --color-accent: #172B36;
+  --color-accent-hover: #114C5A;
+  --color-accent-muted: #E8ECEE;
+  --color-accent-foreground: #FFFFFF;
+  --color-highlight: #2A7DE1;
+  --color-highlight-soft: #5B9FEA;
   --color-danger: #EF4444;
-  --color-border: #1E1E2A;
-  --color-border-hover: #00D4FF;
-  --font-heading: "Bricolage Grotesque", system-ui, sans-serif;
-  --font-body: "Instrument Sans", system-ui, sans-serif;
+  --color-border: #C4CCD2;
+  --color-border-hover: #114C5A;
+  --font-body: "DM Sans", system-ui, sans-serif;
 }
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: #1E1E2A #0A0A0F;
+    scrollbar-color: #C4CCD2 #F3F5F7;
   }
 
   body {
@@ -33,43 +31,37 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
   }
 
   ::selection {
-    background: var(--color-accent-muted);
+    background: #D9E8E2;
     color: var(--color-heading);
-  }
-
-  input, select, textarea {
-    font-family: var(--font-body);
   }
 }
 
 /* Headline XL */
 .headline-xl {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #00D4FF, #00B8E0);
+  background: linear-gradient(135deg, #1A8A9E, #2A7DE1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Hero gradient */
-.hero-gradient {
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 212, 255, 0.08), transparent),
-              radial-gradient(ellipse 50% 50% at 20% 80%, rgba(0, 212, 255, 0.03), transparent);
+/* Section label pattern */
+.section-label {
+  color: #2A7DE1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* Solution card base */
@@ -81,22 +73,6 @@
   transform: translateY(-2px);
 }
 
-/* Colored card tints */
-.card-blue { background: rgba(0, 212, 255, 0.08); border-color: rgba(0, 212, 255, 0.18); }
-.card-blue:hover { border-color: rgba(0, 212, 255, 0.4); background: rgba(0, 212, 255, 0.12); }
-
-.card-emerald { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.18); }
-.card-emerald:hover { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.12); }
-
-.card-violet { background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.18); }
-.card-violet:hover { border-color: rgba(139, 92, 246, 0.4); background: rgba(139, 92, 246, 0.12); }
-
-.card-amber { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.18); }
-.card-amber:hover { border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.12); }
-
-.card-rose { background: rgba(244, 63, 94, 0.08); border-color: rgba(244, 63, 94, 0.18); }
-.card-rose:hover { border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.12); }
-
 /* Marquee animation */
 @keyframes marquee {
   0% { transform: translateX(0); }
@@ -105,10 +81,6 @@
 
 .marquee-track {
   animation: marquee 60s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
 }
 
 /* Scrollbar */

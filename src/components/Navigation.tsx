@@ -5,8 +5,9 @@ import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 const navLinks = [
+  { label: "Process", href: "#process" },
   { label: "Solutions", href: "#solutions" },
-  { label: "Get Started", href: "#contact" },
+  { label: "Results", href: "#results" },
 ];
 
 export default function Navigation() {
@@ -72,7 +73,7 @@ export default function Navigation() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-background/80 backdrop-blur-xl border-b border-border"
+            ? "bg-background/70 backdrop-blur-xl border-b border-black/5"
             : "bg-transparent"
         }`}
       >
@@ -82,17 +83,17 @@ export default function Navigation() {
               <a
                 href="#"
                 onClick={handleLogoClick}
-                className="text-lg font-bold tracking-tight text-heading font-heading"
+                className="text-lg font-bold tracking-tight text-heading"
               >
-                Douglas<span className="text-accent">AI</span>
+                Douglas<span className="gradient-text">AI</span>
               </a>
             ) : (
               <Link
                 href="/"
                 onClick={handleLogoClick}
-                className="text-lg font-bold tracking-tight text-heading font-heading"
+                className="text-lg font-bold tracking-tight text-heading"
               >
-                Douglas<span className="text-accent">AI</span>
+                Douglas<span className="gradient-text">AI</span>
               </Link>
             )}
 
@@ -117,7 +118,7 @@ export default function Navigation() {
               </a>
             </div>
 
-            {/* Mobile: theme toggle + hamburger */}
+            {/* Mobile hamburger */}
             <div className="flex items-center gap-3 md:hidden">
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
@@ -155,7 +156,7 @@ export default function Navigation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm md:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div

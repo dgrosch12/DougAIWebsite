@@ -2,8 +2,9 @@ import { Suspense } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import LogoMarquee from "@/components/LogoMarquee";
+import Process from "@/components/Process";
 import Solutions from "@/components/Solutions";
-import SocialProof from "@/components/SocialProof";
+import Testimonials from "@/components/Testimonials";
 import IntakeForm from "@/components/IntakeForm";
 import Footer from "@/components/Footer";
 
@@ -14,8 +15,13 @@ export default function Home() {
       <main>
         <Hero />
         <LogoMarquee />
+        <section id="process">
+          <Process />
+        </section>
         <Solutions />
-        <SocialProof />
+        <section id="results">
+          <Testimonials />
+        </section>
         <Suspense>
           <IntakeForm />
         </Suspense>

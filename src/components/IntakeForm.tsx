@@ -107,11 +107,12 @@ export default function IntakeForm() {
   const errorClasses = "mt-1 text-sm text-danger";
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32">
+    <section id="contact" className="relative py-24 lg:py-32 bg-surface">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center">
-            <h2 className="headline-xl text-heading">
+            <p className="section-label">Get Started</p>
+            <h2 className="mt-3 headline-xl text-heading">
               Tell Me About{" "}
               <span className="gradient-text">Your Business</span>
             </h2>
@@ -133,7 +134,7 @@ export default function IntakeForm() {
                   key="success"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="rounded-xl border border-border bg-surface p-8 lg:p-10 text-center"
+                  className="rounded-2xl border border-border bg-surface-elevated p-8 lg:p-10 text-center shadow-sm"
                 >
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent/10">
                     <svg
@@ -168,14 +169,14 @@ export default function IntakeForm() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   onSubmit={handleSubmit}
-                  className="rounded-xl border border-border bg-surface p-8 lg:p-10"
+                  className="rounded-2xl border border-border bg-surface-elevated p-8 lg:p-10 shadow-sm"
                   noValidate
                 >
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label
                         htmlFor="fullName"
-                        className="mb-1.5 block text-sm font-medium text-foreground/70"
+                        className="mb-1.5 block text-sm font-medium text-heading/70"
                       >
                         Full Name *
                       </label>
@@ -196,7 +197,7 @@ export default function IntakeForm() {
                     <div>
                       <label
                         htmlFor="businessName"
-                        className="mb-1.5 block text-sm font-medium text-foreground/70"
+                        className="mb-1.5 block text-sm font-medium text-heading/70"
                       >
                         Business Name *
                       </label>
@@ -217,7 +218,7 @@ export default function IntakeForm() {
                     <div>
                       <label
                         htmlFor="website"
-                        className="mb-1.5 block text-sm font-medium text-foreground/70"
+                        className="mb-1.5 block text-sm font-medium text-heading/70"
                       >
                         Website URL
                       </label>
@@ -235,7 +236,7 @@ export default function IntakeForm() {
                     <div>
                       <label
                         htmlFor="email"
-                        className="mb-1.5 block text-sm font-medium text-foreground/70"
+                        className="mb-1.5 block text-sm font-medium text-heading/70"
                       >
                         Email Address *
                       </label>
@@ -256,7 +257,7 @@ export default function IntakeForm() {
                     <div>
                       <label
                         htmlFor="industry"
-                        className="mb-1.5 block text-sm font-medium text-foreground/70"
+                        className="mb-1.5 block text-sm font-medium text-heading/70"
                       >
                         Industry *
                       </label>
@@ -272,9 +273,15 @@ export default function IntakeForm() {
                         <option value="marketing-agency">
                           Marketing Agency
                         </option>
-                        <option value="recruiting">Recruiting</option>
+                        <option value="recruiting">
+                          Recruiting / Staffing
+                        </option>
+                        <option value="web-design">
+                          Web Design / SEO Agency
+                        </option>
                         <option value="real-estate">Real Estate</option>
                         <option value="ecommerce">E-commerce</option>
+                        <option value="consulting">Consulting</option>
                         <option value="other">Other</option>
                       </select>
                       {errors.industry && (
@@ -285,7 +292,7 @@ export default function IntakeForm() {
                     <div>
                       <label
                         htmlFor="leadVolume"
-                        className="mb-1.5 block text-sm font-medium text-foreground/70"
+                        className="mb-1.5 block text-sm font-medium text-heading/70"
                       >
                         Monthly Leads/Inquiries
                       </label>
@@ -304,10 +311,10 @@ export default function IntakeForm() {
                       </select>
                     </div>
 
-                    <div className="sm:col-span-2">
+                    <div>
                       <label
                         htmlFor="budget"
-                        className="mb-1.5 block text-sm font-medium text-foreground/70"
+                        className="mb-1.5 block text-sm font-medium text-heading/70"
                       >
                         Budget Range
                       </label>
@@ -326,10 +333,35 @@ export default function IntakeForm() {
                       </select>
                     </div>
 
+                    <div>
+                      <label
+                        htmlFor="interestedProduct"
+                        className="mb-1.5 block text-sm font-medium text-heading/70"
+                      >
+                        Interested In
+                      </label>
+                      <select
+                        id="interestedProduct"
+                        name="interestedProduct"
+                        value={formData.interestedProduct}
+                        onChange={handleChange}
+                        className={`${inputClasses} appearance-none`}
+                      >
+                        <option value="">Select a product</option>
+                        <option value="speed-to-lead">Speed-to-Lead System</option>
+                        <option value="blog-automation">AI Blog Generator for SEO</option>
+                        <option value="call-transcript-crm">Call Transcript CRM System</option>
+                        <option value="website-foundation">Website Foundation System</option>
+                        <option value="lead-sourcing">Lead Sourcing System</option>
+                        <option value="meeting-summarizer">Enterprise Meeting Summarizer</option>
+                        <option value="custom-build">Custom AI Build</option>
+                      </select>
+                    </div>
+
                     <div className="sm:col-span-2">
                       <label
                         htmlFor="headache"
-                        className="mb-1.5 block text-sm font-medium text-foreground/70"
+                        className="mb-1.5 block text-sm font-medium text-heading/70"
                       >
                         What&apos;s your biggest operational headache right now? *
                       </label>

@@ -1,4 +1,7 @@
+"use client";
+
 import type { Feature } from "@/lib/products";
+import AnimatedSection from "@/components/AnimatedSection";
 
 interface ProductFeaturesProps {
   features: Feature[];
@@ -41,6 +44,11 @@ const iconMap: Record<string, React.ReactNode> = {
     <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
       <path d="M9.25 13.25a.75.75 0 001.5 0V4.636l2.955 3.129a.75.75 0 001.09-1.03l-4.25-4.5a.75.75 0 00-1.09 0l-4.25 4.5a.75.75 0 101.09 1.03L9.25 4.636v8.614z" />
       <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+    </svg>
+  ),
+  image: (
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d="M1 5.25A2.25 2.25 0 013.25 3h13.5A2.25 2.25 0 0119 5.25v9.5A2.25 2.25 0 0116.75 17H3.25A2.25 2.25 0 011 14.75v-9.5zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 00.75-.75v-2.69l-2.22-2.219a.75.75 0 00-1.06 0l-1.91 1.909-4.97-4.969a.75.75 0 00-1.06 0L2.5 11.06zm6.024-5.416a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clipRule="evenodd" />
     </svg>
   ),
   chart: (
@@ -105,6 +113,43 @@ const iconMap: Record<string, React.ReactNode> = {
       <path fillRule="evenodd" d="M4.5 12a2 2 0 00-2 2v1a2 2 0 002 2h1a1 1 0 001-1v-3a1 1 0 00-1-1h-1zm10 0a1 1 0 00-1 1v3a1 1 0 001 1h1a2 2 0 002-2v-1a2 2 0 00-2-2h-1z" clipRule="evenodd" />
     </svg>
   ),
+  tag: (
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d="M5.5 3A2.5 2.5 0 003 5.5v2.879a2.5 2.5 0 00.732 1.767l6.5 6.5a2.5 2.5 0 003.536 0l2.878-2.878a2.5 2.5 0 000-3.536l-6.5-6.5A2.5 2.5 0 008.38 3H5.5zM6 7a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+    </svg>
+  ),
+  doc: (
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d="M4.5 2A1.5 1.5 0 003 3.5v13A1.5 1.5 0 004.5 18h11a1.5 1.5 0 001.5-1.5V7.621a1.5 1.5 0 00-.44-1.06l-4.12-4.122A1.5 1.5 0 0011.378 2H4.5zm2.25 8.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5zm0 3a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z" clipRule="evenodd" />
+    </svg>
+  ),
+  link: (
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z" />
+      <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
+    </svg>
+  ),
+  flow: (
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm3 5A.75.75 0 015.75 9h8.5a.75.75 0 010 1.5h-8.5A.75.75 0 015 9.75zm5 5a.75.75 0 01.75-.75h4.5a.75.75 0 010 1.5h-4.5a.75.75 0 01-.75-.75z" clipRule="evenodd" />
+    </svg>
+  ),
+  target: (
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M17 10a7 7 0 11-14 0 7 7 0 0114 0zm-3.5 0a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0z" />
+    </svg>
+  ),
+  mic: (
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+      <path d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-1.5v-1.546A6.001 6.001 0 0016 10v-.357a.75.75 0 00-1.5 0V10a4.5 4.5 0 01-9 0v-.357z" />
+    </svg>
+  ),
+  check: (
+    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+    </svg>
+  ),
 };
 
 const fallbackIcon = (
@@ -121,35 +166,56 @@ export default function ProductFeatures({
   return (
     <section className="py-16 lg:py-24">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
-        <h2 className="text-center text-2xl font-bold text-heading sm:text-3xl">
-          What&apos;s Included
-        </h2>
+        <AnimatedSection>
+          <p
+            className="text-center text-sm font-semibold uppercase tracking-wider"
+            style={{ color: accentColor }}
+          >
+            Capabilities
+          </p>
+          <h2 className="mt-2 text-center text-2xl font-bold text-heading sm:text-3xl">
+            What&apos;s Included
+          </h2>
+        </AnimatedSection>
+
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {features.map((feature, i) => (
-            <div
+            <AnimatedSection
               key={i}
-              className="rounded-xl border p-6 lg:p-8 transition-colors"
-              style={{
-                borderColor: `rgba(${accentRgb}, 0.12)`,
-                background: `rgba(${accentRgb}, 0.03)`,
-              }}
+              delay={0.1 + i * 0.05}
+              className={i === 0 ? "sm:col-span-2" : ""}
             >
               <div
-                className="flex h-10 w-10 items-center justify-center rounded-lg"
-                style={{
-                  background: `rgba(${accentRgb}, 0.1)`,
-                  color: accentColor,
-                }}
+                className={`h-full rounded-xl border-l-4 bg-surface-elevated p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md lg:p-8 ${
+                  i === 0 ? "sm:flex sm:items-start sm:gap-6" : ""
+                }`}
+                style={{ borderLeftColor: accentColor }}
               >
-                {iconMap[feature.icon] || fallbackIcon}
+                <div
+                  className={`flex shrink-0 items-center justify-center rounded-lg ${
+                    i === 0 ? "h-14 w-14" : "h-10 w-10"
+                  }`}
+                  style={{
+                    background: `rgba(${accentRgb}, 0.1)`,
+                    color: accentColor,
+                  }}
+                >
+                  {iconMap[feature.icon] || fallbackIcon}
+                </div>
+                <div className={i === 0 ? "" : "mt-4"}>
+                  <h3
+                    className={`font-bold text-heading ${
+                      i === 0 ? "text-xl" : "text-lg"
+                    }`}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-[0.9375rem] leading-relaxed text-foreground/60">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
-              <h3 className="mt-4 text-lg font-bold text-heading">
-                {feature.title}
-              </h3>
-              <p className="mt-2 text-[0.9375rem] text-foreground/60 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

@@ -3,13 +3,13 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { products, cardThemes } from "@/lib/products";
 import ProductHero from "@/components/solutions/ProductHero";
-import VideoSection from "@/components/solutions/VideoSection";
 import BeforeAfter from "@/components/solutions/BeforeAfter";
 import ProductFeatures from "@/components/solutions/ProductFeatures";
 import CaseStudy from "@/components/solutions/CaseStudy";
 import ProductTestimonial from "@/components/solutions/ProductTestimonial";
 import Timeline from "@/components/solutions/Timeline";
 import PricingCard from "@/components/solutions/PricingCard";
+import WaitlistCTA from "@/components/solutions/WaitlistCTA";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -45,6 +45,7 @@ export default async function SolutionPage({
 
   const product = products[productIndex];
   const theme = cardThemes[productIndex];
+  const isComingSoon = product.status === "coming-soon";
 
   return (
     <>
@@ -57,86 +58,131 @@ export default async function SolutionPage({
           accentColor={theme.accentColor}
           accentRgb={theme.accentRgb}
           slug={product.slug}
+          status={product.status}
         />
 
-        <VideoSection
-          placeholderText={product.videoPlaceholderText}
-          accentColor={theme.accentColor}
-          accentRgb={theme.accentRgb}
-        />
+        {isComingSoon ? (
+          <>
+            <ProductFeatures
+              features={product.features}
+              accentColor={theme.accentColor}
+              accentRgb={theme.accentRgb}
+            />
 
-        <BeforeAfter
-          items={product.beforeAfter}
-          accentColor={theme.accentColor}
-          accentRgb={theme.accentRgb}
-        />
+            <WaitlistCTA
+              productName={product.name}
+              accentColor={theme.accentColor}
+            />
 
-        <ProductFeatures
-          features={product.features}
-          accentColor={theme.accentColor}
-          accentRgb={theme.accentRgb}
-        />
-
-        <CaseStudy
-          caseStudy={product.caseStudy}
-          accentColor={theme.accentColor}
-          accentRgb={theme.accentRgb}
-        />
-
-        <ProductTestimonial
-          testimonial={product.testimonial}
-          accentColor={theme.accentColor}
-          accentRgb={theme.accentRgb}
-        />
-
-        <Timeline
-          steps={product.timeline}
-          accentColor={theme.accentColor}
-          accentRgb={theme.accentRgb}
-        />
-
-        <PricingCard
-          pricing={product.pricing}
-          bestFor={product.bestFor}
-          pricingNote={product.pricingNote}
-          slug={product.slug}
-          accentColor={theme.accentColor}
-          accentRgb={theme.accentRgb}
-        />
-
-        {/* Bottom CTA */}
-        <section className="py-16 lg:py-24">
-          <div className="mx-auto max-w-4xl px-6 lg:px-8">
-            <div className="rounded-xl border border-border bg-surface p-10 lg:p-16 text-center">
-              <h2 className="text-2xl font-bold text-heading sm:text-3xl">
-                Ready to get started?
-              </h2>
-              <p className="mt-4 text-foreground/60">
-                Fill out a 2-minute form and I&apos;ll send you a personalized
-                Loom walkthrough showing exactly how {product.name} works for
-                your business.
-              </p>
-              <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Link
-                  href={`/get-started?product=${product.slug}`}
-                  className="w-full rounded-xl px-10 py-4 text-base font-semibold text-accent-foreground transition-all hover:opacity-90 sm:w-auto"
-                  style={{ background: theme.accentColor }}
-                >
-                  Get a Free AI Audit
-                </Link>
+            <section className="pb-16 lg:pb-24">
+              <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
                 <Link
                   href="/#solutions"
-                  className="w-full rounded-xl border border-border px-10 py-4 text-base font-semibold text-heading transition-all hover:border-accent/30 hover:bg-accent/5 sm:w-auto"
+                  className="inline-flex items-center gap-2 rounded-xl border border-border px-8 py-3 text-base font-semibold text-heading transition-all hover:border-accent/30 hover:bg-accent/5"
                 >
+                  <svg
+                    className="h-4 w-4"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 10H5m4-4l-4 4 4 4"
+                    />
+                  </svg>
                   Back to All Solutions
                 </Link>
               </div>
-              <p className="mt-4 text-sm text-foreground/40">
-                No sales calls. Personalized Loom walkthrough within 24 hours.
-              </p>
-            </div>
-          </div>
-        </section>
+            </section>
+          </>
+        ) : (
+          <>
+            {product.beforeAfter && product.beforeAfter.length > 0 && (
+              <BeforeAfter
+                items={product.beforeAfter}
+                accentColor={theme.accentColor}
+                accentRgb={theme.accentRgb}
+              />
+            )}
+
+            <ProductFeatures
+              features={product.features}
+              accentColor={theme.accentColor}
+              accentRgb={theme.accentRgb}
+            />
+
+            {product.caseStudy && (
+              <CaseStudy
+                caseStudy={product.caseStudy}
+                accentColor={theme.accentColor}
+                accentRgb={theme.accentRgb}
+              />
+            )}
+
+            {product.testimonial && (
+              <ProductTestimonial
+                testimonial={product.testimonial}
+                accentColor={theme.accentColor}
+                accentRgb={theme.accentRgb}
+              />
+            )}
+
+            {product.timeline && product.timeline.length > 0 && (
+              <Timeline
+                steps={product.timeline}
+                accentColor={theme.accentColor}
+                accentRgb={theme.accentRgb}
+              />
+            )}
+
+            <PricingCard
+              pricing={product.pricing}
+              bestFor={product.bestFor}
+              pricingNote={product.pricingNote}
+              slug={product.slug}
+              accentColor={theme.accentColor}
+              accentRgb={theme.accentRgb}
+            />
+
+            {/* Bottom CTA */}
+            <section className="py-16 lg:py-24">
+              <div className="mx-auto max-w-4xl px-6 lg:px-8">
+                <div className="rounded-2xl border border-border bg-surface-elevated p-10 lg:p-16 text-center">
+                  <h2 className="text-2xl font-bold text-heading sm:text-3xl">
+                    Ready to get started?
+                  </h2>
+                  <p className="mt-4 text-foreground/60">
+                    Fill out a 2-minute form and I&apos;ll send you a
+                    personalized Loom walkthrough showing exactly how{" "}
+                    {product.name} works for your business.
+                  </p>
+                  <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                    <Link
+                      href={`/get-started?product=${product.slug}`}
+                      className="w-full rounded-xl px-10 py-4 text-base font-semibold text-accent-foreground transition-all hover:opacity-90 sm:w-auto"
+                      style={{ background: theme.accentColor }}
+                    >
+                      Get a Free AI Audit
+                    </Link>
+                    <Link
+                      href="/#solutions"
+                      className="w-full rounded-xl border border-border px-10 py-4 text-base font-semibold text-heading transition-all hover:border-accent/30 hover:bg-accent/5 sm:w-auto"
+                    >
+                      Back to All Solutions
+                    </Link>
+                  </div>
+                  <p className="mt-4 text-sm text-foreground/40">
+                    No sales calls. Personalized Loom walkthrough within 24
+                    hours.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
       </div>
     </>
   );

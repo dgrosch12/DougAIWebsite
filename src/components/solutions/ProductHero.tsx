@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ComingSoonBadge from "./ComingSoonBadge";
 
 interface ProductHeroProps {
   name: string;
@@ -8,6 +9,7 @@ interface ProductHeroProps {
   accentColor: string;
   accentRgb: string;
   slug: string;
+  status?: "available" | "coming-soon";
 }
 
 export default function ProductHero({
@@ -18,19 +20,25 @@ export default function ProductHero({
   accentColor,
   accentRgb,
   slug,
+  status = "available",
 }: ProductHeroProps) {
+  const isComingSoon = status === "coming-soon";
+
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28">
       <div className="relative mx-auto max-w-4xl px-6 lg:px-8 text-center">
-        <span
-          className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider"
-          style={{
-            color: accentColor,
-            background: `rgba(${accentRgb}, 0.1)`,
-          }}
-        >
-          {category}
-        </span>
+        <div className="flex items-center justify-center gap-3">
+          <span
+            className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider"
+            style={{
+              color: accentColor,
+              background: `rgba(${accentRgb}, 0.1)`,
+            }}
+          >
+            {category}
+          </span>
+          {isComingSoon && <ComingSoonBadge />}
+        </div>
 
         <h1 className="mt-6 headline-xl text-heading">{name}</h1>
 
@@ -43,13 +51,23 @@ export default function ProductHero({
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
-            href={`/get-started?product=${slug}`}
-            className="w-full rounded-xl px-10 py-4 text-base font-semibold text-accent-foreground transition-all hover:opacity-90 sm:w-auto"
-            style={{ background: accentColor }}
-          >
-            Get a Free AI Audit
-          </Link>
+          {isComingSoon ? (
+            <a
+              href="#waitlist"
+              className="w-full rounded-xl px-10 py-4 text-base font-semibold text-accent-foreground transition-all hover:opacity-90 sm:w-auto"
+              style={{ background: accentColor }}
+            >
+              Get Notified When This Launches
+            </a>
+          ) : (
+            <Link
+              href={`/get-started?product=${slug}`}
+              className="w-full rounded-xl px-10 py-4 text-base font-semibold text-accent-foreground transition-all hover:opacity-90 sm:w-auto"
+              style={{ background: accentColor }}
+            >
+              Get a Free AI Audit
+            </Link>
+          )}
           <Link
             href="/#solutions"
             className="w-full rounded-xl border border-border px-10 py-4 text-base font-semibold text-heading transition-all hover:border-accent/30 hover:bg-accent/5 sm:w-auto"
