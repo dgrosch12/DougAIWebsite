@@ -7,7 +7,7 @@ const steps = [
     number: "01",
     title: "Audit",
     description:
-      "I map your operations end-to-end — tools, handoffs, bottlenecks, and where time is being wasted.",
+      "I map your operations end-to-end - tools, handoffs, bottlenecks, and where time is being wasted.",
   },
   {
     number: "02",

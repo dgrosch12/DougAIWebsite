@@ -64,15 +64,6 @@
   text-transform: uppercase;
 }
 
-/* Solution card base */
-.solution-card {
-  cursor: pointer;
-}
-
-.solution-card:hover {
-  transform: translateY(-2px);
-}
-
 /* Marquee animation */
 @keyframes marquee {
   0% { transform: translateX(0); }

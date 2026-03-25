@@ -58,7 +58,7 @@ export default function Hero() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/70 leading-relaxed sm:text-xl">
-          Custom AI systems for small businesses — deployed in days, ROI in weeks.
+          Custom AI systems for small businesses - deployed in days, ROI in weeks.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

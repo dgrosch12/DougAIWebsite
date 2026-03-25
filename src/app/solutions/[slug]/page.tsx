@@ -25,10 +25,10 @@ export async function generateMetadata({
   if (!product) return {};
 
   return {
-    title: `${product.name} — Douglas AI`,
+    title: `${product.name} - Douglas AI`,
     description: product.heroDescription,
     openGraph: {
-      title: `${product.name} — Douglas AI`,
+      title: `${product.name} - Douglas AI`,
       description: product.tagline,
     },
   };

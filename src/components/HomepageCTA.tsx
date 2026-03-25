@@ -22,7 +22,7 @@ export default function HomepageCTA() {
             </h2>
             <p className="mt-4 text-foreground/60 text-lg">
               Tell me about your business and I&apos;ll send you a
-              personalized AI audit showing exactly what I&apos;d automate — free.
+              personalized AI audit showing exactly what I&apos;d automate - free.
             </p>
             <div className="mt-8">
               <a

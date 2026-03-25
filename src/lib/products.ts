@@ -62,12 +62,12 @@ export const products: Product[] = [
     name: "Speed-to-Lead System",
     tagline: "Connect with every lead within 10 seconds of form submission",
     heroDescription:
-      "Twilio-powered system that calls you the moment a lead submits your web form — while they're still on your site. Includes spam filtering to block junk submissions.",
+      "Twilio-powered system that calls you the moment a lead submits your web form - while they're still on your site. Includes spam filtering to block junk submissions.",
     features: [
       {
         title: "Instant Call to You",
         description:
-          "The moment a lead submits a form, Twilio calls your phone. You answer, and the lead's info is read to you so you can call them back immediately — while they're still on your site.",
+          "The moment a lead submits a form, Twilio calls your phone. You answer, and the lead's info is read to you so you can call them back immediately - while they're still on your site.",
         icon: "phone",
       },
       {
@@ -79,24 +79,24 @@ export const products: Product[] = [
       {
         title: "Universal Form Integration",
         description:
-          "Works with any web form — Webflow, WordPress, custom HTML. Webhook-based, so there's no ripping out your existing tech stack.",
+          "Works with any web form - Webflow, WordPress, custom HTML. Webhook-based, so there's no ripping out your existing tech stack.",
         icon: "plug",
       },
       {
         title: "24/7 Monitoring",
         description:
-          "The system watches your forms around the clock. Nights, weekends, holidays — every submission triggers a call so no lead slips through.",
+          "The system watches your forms around the clock. Nights, weekends, holidays - every submission triggers a call so no lead slips through.",
         icon: "refresh",
       },
     ],
     pricing: "$2,500 setup + $400/month",
     bestFor: "HVAC, plumbing, roofing, electrical, pest control, home services",
     details:
-      "Watches your web forms around the clock. The moment someone submits, Twilio calls you with the lead details — while they're still on your site.",
+      "Watches your web forms around the clock. The moment someone submits, Twilio calls you with the lead details - while they're still on your site.",
     beforeAfter: [
       {
         before: "30+ minute average response time to new leads",
-        after: "Under 10 seconds — you're called while the lead is still on your site",
+        after: "Under 10 seconds - you're called while the lead is still on your site",
       },
       {
         before: "Leads go cold before your team even sees the notification",
@@ -108,7 +108,7 @@ export const products: Product[] = [
       },
       {
         before: "After-hours leads sit in your inbox until morning",
-        after: "24/7 monitoring — every submission triggers a call, nights and weekends included",
+        after: "24/7 monitoring - every submission triggers a call, nights and weekends included",
       },
     ],
     caseStudy: {
@@ -119,7 +119,7 @@ export const products: Product[] = [
         { value: "0", label: "Leads missed" },
       ],
       description:
-        "Elite HVAC was losing web leads to slow follow-up — most went hours without a response. After deploying Speed-to-Lead, every form submission triggers an instant call. Their team now responds in under 10 seconds, around the clock.",
+        "Elite HVAC was losing web leads to slow follow-up - most went hours without a response. After deploying Speed-to-Lead, every form submission triggers an instant call. Their team now responds in under 10 seconds, around the clock.",
       industry: "Home Services",
     },
     testimonial: {
@@ -171,7 +171,7 @@ export const products: Product[] = [
       {
         title: "Long-Form Content Generation",
         description:
-          "Every article is 2,000-3,000 words with proper heading structure, internal linking, and keyword density. Not thin content — real, rankable articles that compete with hand-written pieces.",
+          "Every article is 2,000-3,000 words with proper heading structure, internal linking, and keyword density. Not thin content - real, rankable articles that compete with hand-written pieces.",
         icon: "pen",
       },
       {
@@ -183,7 +183,7 @@ export const products: Product[] = [
       {
         title: "Claude-Powered Editing Dashboard",
         description:
-          "Review and edit articles in a Claude-powered dashboard before they go live. Make tweaks, approve, or regenerate sections — all in one place.",
+          "Review and edit articles in a Claude-powered dashboard before they go live. Make tweaks, approve, or regenerate sections - all in one place.",
         icon: "search",
       },
       {
@@ -209,7 +209,7 @@ export const products: Product[] = [
           "Claude-powered editing dashboard for quick review before publish",
       },
       {
-        before: "No keyword strategy — writing whatever feels right",
+        before: "No keyword strategy - writing whatever feels right",
         after: "AI-driven keyword research targeting high-intent searches",
       },
       {
@@ -226,12 +226,12 @@ export const products: Product[] = [
         { value: "$300/mo", label: "Total content cost" },
       ],
       description:
-        "DAS Consultants needed consistent, high-quality blog content to drive organic traffic but couldn't justify a full-time writer. After deploying the AI Blog Generator, they went from sporadic posting to 30+ articles per month — each 2,000-3,000 words with AI images and YouTube embeds — all for $300/month.",
+        "DAS Consultants needed consistent, high-quality blog content to drive organic traffic but couldn't justify a full-time writer. After deploying the AI Blog Generator, they went from sporadic posting to 30+ articles per month - each 2,000-3,000 words with AI images and YouTube embeds - all for $300/month.",
       industry: "Consulting",
     },
     testimonial: {
       quote:
-        "We went from publishing a couple blog posts a month to 30+ — all long-form, on-brand, and hands-free. The editing dashboard makes it easy to review before anything goes live.",
+        "We went from publishing a couple blog posts a month to 30+ - all long-form, on-brand, and hands-free. The editing dashboard makes it easy to review before anything goes live.",
       name: "DAS Consultants",
       company: "DAS Consultants",
       role: "Client",
@@ -306,7 +306,7 @@ export const products: Product[] = [
     beforeAfter: [
       {
         before: "30+ minutes per day manually typing call notes into CRM",
-        after: "Every call automatically transcribed and logged — zero manual entry",
+        after: "Every call automatically transcribed and logged - zero manual entry",
       },
       {
         before: "Inconsistent note quality depending on who took the call",
@@ -330,7 +330,7 @@ export const products: Product[] = [
         { value: "$600", label: "One-time setup cost" },
       ],
       description:
-        "Network Mountain's recruiting team was spending over 30 minutes per day manually logging call notes into Crelate. After deploying the Call Transcript CRM System, every call from RingCentral and 2X Connect is automatically transcribed, classified, and formatted — with smart contact matching that puts the right notes on the right candidate record.",
+        "Network Mountain's recruiting team was spending over 30 minutes per day manually logging call notes into Crelate. After deploying the Call Transcript CRM System, every call from RingCentral and 2X Connect is automatically transcribed, classified, and formatted - with smart contact matching that puts the right notes on the right candidate record.",
       industry: "Recruiting / Staffing",
     },
     testimonial: {
@@ -362,14 +362,14 @@ export const products: Product[] = [
       },
     ],
     category: "CRM Automation",
-    pricingNote: "One-time setup — no monthly fees",
+    pricingNote: "One-time setup - no monthly fees",
     status: "available",
   },
   {
     slug: "website-foundation",
     name: "Website Foundation System",
     tagline:
-      "Automated competitor research, sitemap generation, and keyword strategy in hours — not weeks",
+      "Automated competitor research, sitemap generation, and keyword strategy in hours - not weeks",
     heroDescription:
       "4-stage automation pipeline that takes a client intake form and produces a complete website foundation: competitor analysis, AI-generated sitemap, and deep keyword research with search volume data. Uses DataForSEO, Google Ads API, and Claude to replace 35-55 hours of manual agency work per client.",
     features: [
@@ -407,7 +407,7 @@ export const products: Product[] = [
     pricingNote: "Per-client processing included in monthly fee",
     status: "coming-soon",
     comingSoonNote:
-      "Currently being built for CK (Gerald Griffin HVAC). This system replaces the most time-consuming part of website projects — the research and planning phase that typically takes 35-55 hours of manual agency work per client.",
+      "Currently being built for CK (Gerald Griffin HVAC). This system replaces the most time-consuming part of website projects - the research and planning phase that typically takes 35-55 hours of manual agency work per client.",
   },
   {
     slug: "lead-sourcing",
@@ -415,7 +415,7 @@ export const products: Product[] = [
     tagline:
       "Automatically find and deliver business owner phone numbers for cold outreach",
     heroDescription:
-      "Scrapes targeted business owner contact information — including direct phone numbers — from public sources and delivers qualified lead lists ready for cold calling. Define your target industry, geography, and company size, and get fresh leads on a recurring schedule.",
+      "Scrapes targeted business owner contact information - including direct phone numbers - from public sources and delivers qualified lead lists ready for cold calling. Define your target industry, geography, and company size, and get fresh leads on a recurring schedule.",
     features: [
       {
         title: "Targeted Business Search",
@@ -432,7 +432,7 @@ export const products: Product[] = [
       {
         title: "Recurring Lead Delivery",
         description:
-          "Set your volume and schedule — get fresh lead lists delivered weekly or monthly. No duplicate leads across deliveries.",
+          "Set your volume and schedule - get fresh lead lists delivered weekly or monthly. No duplicate leads across deliveries.",
         icon: "refresh",
       },
       {
@@ -469,7 +469,7 @@ export const products: Product[] = [
       {
         title: "Structured Summaries",
         description:
-          "AI generates a summary with key decisions, discussion points, and action items — tagged by participant. Skip the 60-minute recording, read the 2-minute summary.",
+          "AI generates a summary with key decisions, discussion points, and action items - tagged by participant. Skip the 60-minute recording, read the 2-minute summary.",
         icon: "doc",
       },
       {
@@ -500,7 +500,7 @@ export const products: Product[] = [
     name: "Custom AI Build",
     tagline: "Got a unique workflow? I'll automate it.",
     heroDescription:
-      "Don't see what you need above? I'll build it from scratch. End-to-end — discovery, build, deployment. Runs on n8n, Supabase, and best-in-class AI APIs. You own everything.",
+      "Don't see what you need above? I'll build it from scratch. End-to-end - discovery, build, deployment. Runs on n8n, Supabase, and best-in-class AI APIs. You own everything.",
     features: [
       {
         title: "End-to-End Discovery",
@@ -531,7 +531,7 @@ export const products: Product[] = [
     bestFor:
       "Any business with repetitive processes eating up time and money",
     details:
-      "Got a workflow that doesn't fit the productized systems? I'll build it custom — end-to-end, from discovery to deployment.",
+      "Got a workflow that doesn't fit the productized systems? I'll build it custom - end-to-end, from discovery to deployment.",
     beforeAfter: [
       {
         before: "Hours spent on repetitive manual processes every week",
@@ -539,11 +539,11 @@ export const products: Product[] = [
       },
       {
         before: "Locked into expensive SaaS tools that don't fit",
-        after: "Custom-built system you own — no monthly platform fees",
+        after: "Custom-built system you own - no monthly platform fees",
       },
       {
         before: "Months-long development timelines with dev agencies",
-        after: "Deployed in days, not months — using proven automation patterns",
+        after: "Deployed in days, not months - using proven automation patterns",
       },
       {
         before: "No visibility into what's happening in your workflows",

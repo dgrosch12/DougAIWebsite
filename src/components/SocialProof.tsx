@@ -68,7 +68,7 @@ const testimonials = [
   },
   {
     quote:
-      "We went from publishing 4 blog posts a month to 30+ — all optimized, on-brand, and hands-free. Our organic traffic tripled in 90 days.",
+      "We went from publishing 4 blog posts a month to 30+ - all optimized, on-brand, and hands-free. Our organic traffic tripled in 90 days.",
     name: "Sarah K.",
     company: "Bright Digital Agency",
     industry: "Marketing Agency",

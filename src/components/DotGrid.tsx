@@ -90,13 +90,13 @@ export default function DotGrid() {
     function draw(time: number) {
       ctx!.clearRect(0, 0, width, height);
 
-      // Update positions — gentle drift + mouse repulsion
+      // Update positions - gentle drift + mouse repulsion
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
         let tx = n.baseX + Math.sin(time * 0.001 * n.vx * 10 + i) * DRIFT_RANGE;
         let ty = n.baseY + Math.cos(time * 0.001 * n.vy * 10 + i * 0.7) * DRIFT_RANGE;
 
-        // Mouse interaction — push nodes away, brighten nearby
+        // Mouse interaction - push nodes away, brighten nearby
         const mdx = tx - mouseX;
         const mdy = ty - mouseY;
         const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
@@ -185,7 +185,7 @@ export default function DotGrid() {
         ctx!.fill();
       }
 
-      // Data pulses — multiple at once
+      // Data pulses - multiple at once
       for (let p = 0; p < 4; p++) {
         const offset = (nodes.length / 4) * p;
         const pulsePhase = ((time * 0.0008) + offset) % nodes.length;
@@ -212,7 +212,7 @@ export default function DotGrid() {
       draw(time);
     }
 
-    // Mouse tracking — uses parent element for hit area
+    // Mouse tracking - uses parent element for hit area
     const parent = canvas.parentElement!;
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas!.getBoundingClientRect();

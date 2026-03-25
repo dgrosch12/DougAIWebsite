@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Douglas AI — Productized AI Automation for Home Services & Agencies",
+  title: "Douglas AI - Productized AI Automation for Home Services & Agencies",
   description:
-    "I build AI systems that make your business money while you sleep. Productized AI automation for home service companies and marketing agencies — from 10-second lead response to fully automated content engines.",
+    "I build AI systems that make your business money while you sleep. Productized AI automation for home service companies and marketing agencies - from 10-second lead response to fully automated content engines.",
   keywords: [
     "AI automation",
     "home service automation",
@@ -23,14 +23,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     title:
-      "Douglas AI — Productized AI Automation for Home Services & Agencies",
+      "Douglas AI - Productized AI Automation for Home Services & Agencies",
     description:
       "Productized AI automation deployed in days, not months. Speed-to-lead systems, AI blog engines, hiring automation, and custom builds.",
     siteName: "Douglas AI",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Douglas AI — Productized AI Automation",
+    title: "Douglas AI - Productized AI Automation",
     description:
       "I build AI systems that make your business money while you sleep. 23+ systems deployed. Trusted by agencies and service businesses nationwide.",
   },

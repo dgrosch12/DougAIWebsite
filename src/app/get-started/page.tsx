@@ -5,7 +5,7 @@ import IntakeForm from "@/components/IntakeForm";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Get Started — Douglas AI",
+  title: "Get Started - Douglas AI",
   description:
     "Quick form, no sales calls. I'll send you a Loom walkthrough of exactly what I'd automate in your business.",
 };
