@@ -39,6 +39,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Failed to save submission" }, { status: 500 });
     }
 
+    // Notify n8n webhook for Telegram notification (fire-and-forget)
+    const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL;
+    if (n8nWebhookUrl) {
+      fetch(n8nWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, businessName, website, email, industry, leadVolume, budget, interestedProduct, headache, formType: isWaitlist ? "waitlist" : "intake" }),
+      }).catch(() => {});
+    }
+
     return NextResponse.json({ success: true });
   } catch {
     console.error("Form submission error");
