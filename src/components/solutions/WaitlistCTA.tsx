@@ -21,9 +21,20 @@ export default function WaitlistCTA({
 
     setSubmitting(true);
     try {
-      // TODO: Replace with actual submission endpoint
-      console.log("Waitlist signup:", { email, product: productName });
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          interestedProduct: productName,
+          formType: "waitlist",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
       setSubmitted(true);
     } catch {
       console.error("Waitlist submission failed");

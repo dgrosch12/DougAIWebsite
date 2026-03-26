@@ -89,9 +89,15 @@ export default function IntakeForm() {
     setSubmitting(true);
 
     try {
-      // TODO: Replace with actual form submission endpoint
-      console.log("Form submitted:", formData);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
 
       setSubmitted(true);
       setFormData(initialFormData);
