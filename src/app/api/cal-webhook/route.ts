@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
     const website = responses.website?.value || null;
     const industry = responses.industry?.value || null;
     const challenge = responses.challenge?.value || null;
+    const notes = responses.notes?.value || booking.additionalNotes || null;
     const bookingTime = booking.startTime || null;
     const meetingUrl = booking.metadata?.videoCallUrl || null;
 
@@ -30,6 +31,9 @@ export async function POST(request: NextRequest) {
       email: email,
       industry: industry,
       headache: challenge,
+      notes: notes,
+      booking_time: bookingTime,
+      meeting_url: meetingUrl,
       form_type: "cal_booking",
     });
 
@@ -51,6 +55,7 @@ export async function POST(request: NextRequest) {
           website: website,
           industry: industry,
           headache: challenge,
+          notes: notes,
           bookingTime: bookingTime,
           meetingUrl: meetingUrl,
         }),
