@@ -209,6 +209,16 @@ export default function Solutions() {
                   </p>
                 </div>
 
+                <a
+                  href="#contact"
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.preventDefault();
+                    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="shrink-0 rounded-xl bg-accent px-8 py-3.5 text-[0.9375rem] font-semibold text-accent-foreground transition-all hover:bg-accent-hover"
+                >
+                  Let&apos;s Talk
+                </a>
               </div>
             </div>
           </div>

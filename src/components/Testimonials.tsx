@@ -74,6 +74,21 @@ export default function Testimonials() {
             </AnimatedSection>
           ))}
         </div>
+
+        <AnimatedSection>
+          <div className="mt-12 text-center">
+            <a
+              href="#contact"
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.preventDefault();
+                document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="inline-block rounded-xl bg-accent px-8 py-3.5 text-[0.9375rem] font-semibold text-accent-foreground transition-all hover:bg-accent-hover"
+            >
+              Book a Call
+            </a>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
