@@ -5,7 +5,7 @@ import LogoMarquee from "@/components/LogoMarquee";
 import Process from "@/components/Process";
 import Solutions from "@/components/Solutions";
 import Testimonials from "@/components/Testimonials";
-import IntakeForm from "@/components/IntakeForm";
+import CalBooking from "@/components/CalBooking";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
           <Testimonials />
         </section>
         <Suspense>
-          <IntakeForm />
+          <CalBooking />
         </Suspense>
       </main>
       <Footer />

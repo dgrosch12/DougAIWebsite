@@ -21,8 +21,8 @@ export default function HomepageCTA() {
               Not sure where to start?
             </h2>
             <p className="mt-4 text-foreground/60 text-lg">
-              Tell me about your business and I&apos;ll send you a
-              personalized AI audit showing exactly what I&apos;d automate - free.
+              Book a free 30-minute call and I&apos;ll walk you through
+              exactly what I&apos;d automate and the ROI you can expect.
             </p>
             <div className="mt-8">
               <a
@@ -30,11 +30,11 @@ export default function HomepageCTA() {
                 onClick={(e) => handleScroll(e, "#contact")}
                 className="inline-block rounded-xl bg-accent px-10 py-4 text-[1.0625rem] font-semibold text-accent-foreground transition-all hover:bg-accent-hover"
               >
-                Get a Free AI Audit
+                Book a Free Strategy Call
               </a>
             </div>
             <p className="mt-4 text-sm text-foreground/40">
-              No sales calls. Just a Loom video in your inbox within 24 hours.
+              30 minutes. No pressure. Just actionable insights for your business.
             </p>
           </div>
         </AnimatedSection>

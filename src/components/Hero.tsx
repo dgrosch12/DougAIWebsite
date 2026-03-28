@@ -67,7 +67,7 @@ export default function Hero() {
             onClick={(e) => handleScroll(e, "#contact")}
             className="w-full rounded-xl bg-accent px-10 py-4 text-center text-[1.0625rem] font-semibold text-accent-foreground transition-all hover:bg-accent-hover sm:w-auto"
           >
-            Get a Free AI Audit
+            Book a Free Strategy Call
           </a>
           <a
             href="#solutions"

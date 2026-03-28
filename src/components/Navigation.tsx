@@ -114,7 +114,7 @@ export default function Navigation() {
                 onClick={handleGetStarted}
                 className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-all hover:bg-accent-hover"
               >
-                Free AI Audit
+                Book a Call
               </a>
             </div>
 
@@ -181,7 +181,7 @@ export default function Navigation() {
                 onClick={handleGetStarted}
                 className="mt-6 rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground"
               >
-                Free AI Audit
+                Book a Call
               </a>
             </motion.div>
           </>
