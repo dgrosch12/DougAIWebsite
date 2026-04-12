@@ -140,7 +140,7 @@ export default function Solutions() {
               <span className="gradient-text">Build</span>
             </h2>
             <p className="mt-4 text-lg text-foreground/60">
-              Productized AI systems. Pick what fits - running in your business
+              Custom AI systems. Pick what fits - running in your business
               within days.
             </p>
           </div>

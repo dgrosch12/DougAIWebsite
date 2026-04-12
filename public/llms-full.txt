@@ -1,0 +1,114 @@
+# Douglas AI — Full Content Index
+
+> AI automation consulting for agency owners and business owners who are tired of wasting time on repetitive processes.
+> Douglas Grosch builds custom AI systems — Speed-to-Lead automation, AI blog generation, call transcription & CRM integration, and custom workflows — that run on autopilot using n8n, Claude, Supabase, and Twilio.
+
+---
+
+## Homepage
+
+### Hero
+AI Automation That Actually Delivers ROI
+Custom AI systems for small businesses — deployed in days, ROI in weeks.
+
+Primary CTAs: Book a Free Strategy Call · See What I Build
+
+### Process — How I Work
+A proven four-step process that takes you from operational bottleneck to AI-powered efficiency.
+
+1. Audit — Douglas maps your operations end-to-end: tools, handoffs, bottlenecks, and where time is being wasted.
+2. Discovery — Together you define what success looks like, scope the build, and align on timeline and budget.
+3. Build — Douglas designs and deploys your custom AI system using n8n, Supabase, and leading AI APIs.
+4. Monitor — Your system goes live with monitoring, support, and continuous optimization.
+
+### Solutions — What I Build
+Custom AI systems. Pick what fits — running in your business within days.
+
+Built & Running: Speed-to-Lead System, AI Blog Generator for SEO, Call Transcript CRM System, Custom AI Build.
+Coming Soon: Website Foundation System, Lead Sourcing System, Enterprise Meeting Summarizer.
+
+### Results — What Clients Say
+- Marcus T., Owner, Elite HVAC Solutions (Home Services): "Douglas built our speed-to-lead system and our close rate jumped 35% in the first month. We were leaving so much money on the table before."
+- Sarah K., Bright Digital Agency (Marketing Agency): "We went from publishing 4 blog posts a month to 30+ — all optimized, on-brand, and hands-free. Our organic traffic tripled in 90 days."
+- James R., Apex Staffing Group (Recruiting): "The hiring system saved us easily 20 hours a week on screening. We found our best hire in years through Douglas's automated ranking system."
+
+---
+
+## About
+
+Douglas Grosch is an AI automation engineer and consultant. He builds custom AI systems for small businesses, marketing agencies, recruiting firms, and operators who want measurable outcomes rather than hype or demos. His work is built on open infrastructure — n8n for workflow orchestration, Supabase (PostgreSQL) for data, Claude API (Anthropic) and OpenAI Whisper for AI capabilities, Twilio for SMS/voice, and Next.js for web apps. Enterprise deployments also use AWS Lambda and Amazon Bedrock. Clients own all code and infrastructure — no vendor lock-in.
+
+---
+
+## Services
+
+### Speed-to-Lead System
+Connect with every lead within 10 seconds of form submission.
+
+A Twilio-powered system that calls the business owner the moment a lead submits a web form — while the lead is still on the site. Includes spam filtering to block bot submissions and junk entries, universal web form integration (Webflow, WordPress, custom HTML, webhook-based), and 24/7 monitoring nights and weekends.
+
+- Pricing: $2,500 setup + $400/month
+- Best for: HVAC, plumbing, roofing, electrical, pest control, and other home service businesses
+- Outcomes: Response time drops from 30+ minutes to under 10 seconds. Every lead is contacted before they leave the site. Spam and test fills are filtered before they reach the owner's phone.
+- Case study: Elite HVAC Solutions responds to every lead in under 10 seconds. Metrics: <10s response time, 24/7 lead monitoring, 0 leads missed.
+- Timeline: Day 1 — Discovery & Twilio setup. Day 2-3 — Integration & live testing. Day 4-5 — Go live with monitoring. Ongoing — Monthly performance review and priority support.
+
+### AI Blog Generator for SEO
+Publish 30+ SEO-optimized, 2,000-3,000 word articles per month on autopilot.
+
+An end-to-end content pipeline that researches keywords, writes long-form articles matched to brand voice, generates AI images via Nano Banana, embeds relevant YouTube videos, and publishes directly to Webflow or Brizy. Includes a Claude-powered editing dashboard for review before publish.
+
+- Pricing: $1,500 setup + $300/month
+- Best for: Marketing agencies, web design firms, businesses that need content at scale
+- Outcomes: Replaces $3,000/month writers with 30+ posts per month at a fraction of the cost. AI-driven keyword research targets high-intent searches. Auto-publishes on the client's schedule.
+- Case study: DAS Consultants scaled content output 10x — 30+ posts per month at 2,500 avg words per article, total content cost $300/month.
+- Timeline: Day 1-2 — Brand voice and keyword strategy. Day 3-5 — System build, CMS integration, and dashboard setup. Day 6-7 — Calibration and launch. Ongoing — Monthly performance reports and keyword refreshes.
+
+### Call Transcript CRM System
+Automatically transcribe, classify, and log every call to your CRM.
+
+An n8n-powered pipeline that pulls call recordings from RingCentral or 2X Connect, transcribes them with OpenAI Whisper, classifies the call type with AI (Screen, Call, Discovery, Debrief, Voicemail), formats transcripts using role-specific templates, and pushes everything into Crelate CRM with smart contact matching by phone number, fuzzy name matching, and activity correlation.
+
+- Pricing: $600 one-time setup, no monthly fees
+- Best for: Recruiting firms, staffing agencies, sales teams with high call volume
+- Outcomes: Eliminates 30+ minutes per day of manual CRM data entry. Standardized note quality across teams. Full-text transcripts linked to contacts for instant lookup.
+- Case study: Network Mountain eliminated 30+ min/day of manual CRM work. Metrics: 100% of calls captured, 5 call types auto-classified, $600 one-time setup cost.
+- Timeline: Day 1 — Phone system and CRM mapping. Day 2 — Pipeline build with Whisper transcription and templates. Day 3 — Testing with real calls, contact matching tune, and go live.
+
+### Custom AI Build
+Got a unique workflow? Douglas will automate it.
+
+End-to-end custom development: discovery, build, deployment. Runs on n8n, Supabase, and best-in-class AI APIs. Clients own all code with no vendor lock-in and no proprietary platforms.
+
+- Pricing: Starting at $5,000+
+- Best for: Any business with repetitive processes eating up time and money
+- Outcomes: Fully automated workflows replace manual weekly work. Custom-built systems replace expensive SaaS tools that don't fit. Monitoring, logging, and alerting built in.
+- Timeline: Day 1 — Discovery session. Day 2-3 — System design and build. Day 4-5 — Testing and deployment. Ongoing — Optional monthly support for optimization and new capabilities.
+
+### Website Foundation System (coming soon)
+Automated competitor research, sitemap generation, and keyword strategy in hours — not weeks. A 4-stage pipeline (intake → competitor research → AI sitemap → keyword research) that takes a client intake form and produces a complete website foundation. Uses DataForSEO, Google Ads API, and Claude. Replaces 35-55 hours of manual agency work per client. Pricing: $1,500 setup + $400/month.
+
+### Lead Sourcing System (coming soon)
+Scrapes targeted business owner contact information including direct phone numbers from public sources. Define industry, geography, and company size. Delivers CRM-ready lists on a recurring schedule.
+
+### Enterprise Meeting Summarizer (coming soon)
+AI meeting transcription with searchable summaries and action item tracking. Joins Zoom, Teams, or Google Meet calls, generates structured summaries with decisions and action items, and stores everything in a searchable meeting database.
+
+---
+
+## FAQ
+
+Q: What kinds of businesses does Douglas work with?
+A: Douglas primarily works with agency owners, marketing agencies serving home service businesses (HVAC, plumbing, paving, landscaping, roofing, electrical), recruiting and staffing agencies, and any business owner looking to automate repetitive processes using AI.
+
+Q: What does Speed-to-Lead automation do?
+A: Speed-to-Lead is a Twilio-powered system that calls the business owner the moment a new lead fills out a web form. The owner picks up, the lead's information is read to them, and they can call the lead back while the lead is still on their site. Includes spam filtering and 24/7 monitoring. Deployed in production for Elite HVAC Solutions and other home service businesses.
+
+Q: How does Douglas charge for projects?
+A: Most productized systems have a setup fee plus an optional monthly support retainer. Custom builds start at $5,000+ with scope and pricing determined during discovery. Douglas also offers a free strategy call to identify the highest-impact automation opportunities for your business.
+
+Q: What tech stack does Douglas use?
+A: n8n for workflow orchestration, Supabase (PostgreSQL) for databases, Claude API by Anthropic for AI capabilities, OpenAI Whisper for transcription, Twilio for SMS and voice, Next.js for web apps, and AWS Lambda plus Amazon Bedrock for enterprise deployments. Clients own all code — no vendor lock-in.
+
+Q: How do I get started?
+A: Book a free strategy call from the homepage or at /get-started. Douglas will assess your current workflows and recommend the highest-ROI automation to build first.

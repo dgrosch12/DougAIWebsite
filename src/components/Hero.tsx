@@ -54,7 +54,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl px-6 py-16 text-center">
         <h1 className="headline-xl mx-auto max-w-4xl text-heading">
           AI Automation That{" "}
-          <span className="gradient-text">Actually Delivers an ROI</span>
+          <span className="gradient-text">Actually Delivers ROI</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/70 leading-relaxed sm:text-xl">

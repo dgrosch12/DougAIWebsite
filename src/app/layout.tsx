@@ -2,37 +2,36 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Douglas AI - Productized AI Automation for Home Services & Agencies",
+  title: "Douglas AI - AI Automation That Actually Delivers ROI",
   description:
-    "I build AI systems that make your business money while you sleep. Productized AI automation for home service companies and marketing agencies - from 10-second lead response to fully automated content engines.",
+    "AI automation built for businesses that want measurable outcomes — not guesswork, not demos, not hype.",
   keywords: [
     "AI automation",
-    "home service automation",
-    "marketing agency automation",
+    "custom AI automation",
+    "AI consulting",
     "speed to lead",
-    "AI blog automation",
-    "AI hiring system",
-    "lead enrichment",
+    "AI content automation",
+    "call transcription",
+    "lead sourcing",
     "n8n automation",
     "business automation",
     "Douglas AI",
   ],
-  authors: [{ name: "Douglas" }],
+  authors: [{ name: "Douglas Grosch" }],
   creator: "Douglas AI",
   openGraph: {
     type: "website",
     locale: "en_US",
-    title:
-      "Douglas AI - Productized AI Automation for Home Services & Agencies",
+    title: "Douglas AI - AI Automation That Actually Delivers ROI",
     description:
-      "Productized AI automation deployed in days, not months. Speed-to-lead systems, AI blog engines, hiring automation, and custom builds.",
+      "AI automation built for businesses that want measurable outcomes — not guesswork, not demos, not hype.",
     siteName: "Douglas AI",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Douglas AI - Productized AI Automation",
+    title: "Douglas AI - AI Automation That Actually Delivers ROI",
     description:
-      "I build AI systems that make your business money while you sleep. 23+ systems deployed. Trusted by agencies and service businesses nationwide.",
+      "AI automation built for businesses that want measurable outcomes — not guesswork, not demos, not hype.",
   },
   robots: {
     index: true,
@@ -65,19 +64,38 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               name: "Douglas AI",
+              url: "https://douglasai.co",
+              logo: "https://douglasai.co/logo.svg",
               description:
-                "Productized AI automation for home service companies and marketing agencies.",
+                "AI automation consulting for agency owners and business owners. Douglas Grosch builds custom AI systems including Speed-to-Lead automation, AI blog generation, call transcription & CRM integration, and custom workflow automation.",
               founder: {
                 "@type": "Person",
-                name: "Douglas",
+                name: "Douglas Grosch",
+                jobTitle: "AI Automation Consultant",
+                url: "https://douglasai.co/about",
               },
-              areaServed: "US",
               serviceType: [
                 "AI Automation",
-                "Lead Response Systems",
-                "AI Content Generation",
-                "Hiring Automation",
-                "Lead Enrichment",
+                "Workflow Automation",
+                "Speed-to-Lead Systems",
+                "AI Blog Generation",
+                "Call Transcription",
+                "CRM Integration",
+                "n8n Workflow Development",
+                "Supabase Development",
+                "Custom AI Build",
+              ],
+              areaServed: "United States",
+              priceRange: "$$",
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "sales",
+                url: "https://douglasai.co/get-started",
+              },
+              sameAs: [
+                "https://www.linkedin.com/in/douglas-grosch/",
+                "https://www.youtube.com/@dougbuilds",
+                "https://www.instagram.com/douglasgrosch_/",
               ],
             }),
           }}

@@ -1,0 +1,32 @@
+# Douglas AI
+
+> AI automation consulting for agency owners and business owners who are tired of wasting time on repetitive processes.
+> Douglas Grosch builds custom AI systems — Speed-to-Lead automation, AI blog generation, call transcription & CRM integration, and website foundation pipelines — that run on autopilot using n8n, Claude, Supabase, and Twilio.
+
+## Services
+
+- [Speed-to-Lead System](/solutions/speed-to-lead): Twilio-powered system that calls the business owner the moment a new lead fills out a web form — under 10 seconds, 24/7. Includes spam filtering and universal web form integration.
+- [AI Blog Generator for SEO](/solutions/blog-automation): End-to-end content pipeline that researches keywords, writes 2,000-3,000 word articles in your brand voice, generates AI images, embeds YouTube videos, and auto-publishes 30+ posts/month to Webflow or Brizy.
+- [Call Transcript CRM System](/solutions/call-transcript-crm): n8n pipeline that pulls recordings from RingCentral or 2X Connect, transcribes with OpenAI Whisper, classifies call type, formats with role-specific templates, and logs to Crelate with smart contact matching.
+- [Custom AI Build](/solutions/custom-build): End-to-end custom automation — discovery, build, deployment. Runs on n8n, Supabase, and leading AI APIs. No vendor lock-in, full code ownership.
+- [Website Foundation System](/solutions/website-foundation): Automated competitor research, AI-generated sitemap, and deep keyword research pipeline. Replaces 35-55 hours of manual agency work per client. # (coming soon)
+- [Lead Sourcing System](/solutions/lead-sourcing): Automated business owner phone number extraction for cold outreach campaigns. # (coming soon)
+- [Enterprise Meeting Summarizer](/solutions/meeting-summarizer): AI meeting transcription with structured summaries, action item tracking, and searchable meeting database. # (coming soon)
+
+## About
+
+- [About Douglas](/about): Background, tech stack, and consulting approach # (coming soon)
+- [Case Studies / Results](/case-studies): Real client outcomes from 23+ production deployments # (coming soon)
+- [Book a Free Strategy Call](/get-started): Contact form and Cal.com booking flow for a free AI audit
+
+## Who Douglas Works With
+
+Agency owners, marketing agencies serving home service businesses (HVAC, plumbing, roofing, electrical, pest control), recruiting and staffing firms, and tech-curious business owners looking to automate repetitive workflows using AI systems.
+
+## Tech Stack
+
+n8n, Supabase (PostgreSQL), Claude API (Anthropic), OpenAI Whisper, Twilio, Next.js, AWS Lambda, Amazon Bedrock
+
+## Optional
+
+- [Homepage](/)
